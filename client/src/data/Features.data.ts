@@ -3,7 +3,9 @@ import WriteFaster from "@assets/write-faster.jpg";
 import Connect from "@assets/connect.jpg";
 import Collaboration from "@assets/collaboration.jpg";
 
-const features = [
+import featuresType from "../types/feature.types";
+
+const features: featuresType[] = [
 	{
 		image: Seamless,
 		title: "Seamless collaboration, from anywhere",

@@ -2,7 +2,9 @@ import StayProductive from '@assets/stay-productive.svg'
 import AddOns from '@assets/add-ons.svg'
 import FreshContent from '@assets/fresh-content.svg'
 
-const advantages = [
+import advantagesType from '../types/advantage.types'
+
+const advantages: advantagesType[] = [
   {
     image: AddOns,
     title: 'Do more with add-ons',
