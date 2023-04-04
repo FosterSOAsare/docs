@@ -134,17 +134,17 @@ const Homepage = () => {
 				</div>
 			</section>
 
-			<section id="security" className=" my-24 relative overflow-hidden">
-				<div className="w-full max-w-screen-lg h-full flex flex-col justify-center items-center mx-auto ">
-					<h3 className="text-[36px] ">Security, compliance, and privacy</h3>
-					<div className="flex items-center justify-between gap-12 my-16">
-						<img src={IsoIecImage} alt="" className="w-16 h-16 rounded-full" />
-						<img src={SocImage} alt="" className="w-16 h-16 rounded-full" />
-						<img src={FrImage} alt="" className="w-16 h-16 rounded-full" />
-						<img src={HipaaImage} alt="" className="w-16 h-16 rounded-full" />
+			<section id="security" className=" my-24 relative overflow-hidden  px-6 lg:px-12">
+				<div className="w-full max-w-screen-lg h-full flex flex-col justify-center items-center mx-auto  ">
+					<h3 className="text-3xl md:text-[36px] ">Security, compliance, and privacy</h3>
+					<div className="flex items-center justify-between gap-3 sm:gap-12 my-16">
+						<img src={IsoIecImage} alt="" className="w-12 sm:w-16 h-12 sm:h-16 rounded-full" />
+						<img src={SocImage} alt="" className="w-12 sm:w-16 h-12 sm:h-16 rounded-full" />
+						<img src={FrImage} alt="" className="w-12 sm:w-16 h-12 sm:h-16 rounded-full" />
+						<img src={HipaaImage} alt="" className="w-12 sm:w-16 h-12 sm:h-16 rounded-full" />
 					</div>
-					<article className="w-full flex items-start justify-between">
-						<div className="h-full w-1/2 border-r-[1px] border-border py-4">
+					<article className="w-full flex items-start justify-between flex-col sm:flex-row">
+						<div className="h-full w-full sm:w-1/2 sm:border-r-[1px] border-border py-4">
 							<div className="w-[95%]">
 								<article className="mb-8">
 									<h3 className="text-xl mb-2">Secure by default</h3>
@@ -168,7 +168,7 @@ const Homepage = () => {
 								</article>
 							</div>
 						</div>
-						<div className="h-full w-1/2 py-4 pl-8">
+						<div className="h-full w-full sm:w-1/2 py-4 sm:pl-8">
 							<div>
 								<article className="mb-14">
 									<h3 className="text-xl mb-2">Private by design</h3>
@@ -187,7 +187,7 @@ const Homepage = () => {
 						</div>
 					</article>
 				</div>
-				<aside className="absolute top-0 -left-2 ">
+				<aside className="absolute top-0 -left-2 hidden lg:block">
 					<img src="https://lh3.googleusercontent.com/yZpn6aefEiMGwAiVZiDDoUjVLMQa1C4okqks_VEOFWBkUURnVS51HeoLqIFKeC_oa5FT_hLRD06a9w8XWfreM26RBSLJQTrZvNny47vCCbC1llYrF7E=w1024" alt="" />
 				</aside>
 			</section>
