@@ -13,7 +13,8 @@ import advantagesType from "../types/advantage.types";
 import AddOnsTypes from "../types/add-ons.types";
 
 import HomepageFeature from "../components/HomepageFeature";
-import HomepageAdvantage from "../components/HomepageAdvantage.js";
+import HomepageAdvantage from "../components/HomepageAdvantage";
+import SideMenu from "../components/SideMenu";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";
@@ -46,6 +47,8 @@ const Homepage = () => {
 					</a>
 				</div>
 			</header>
+
+			<SideMenu />
 
 			<section className="w-full h-[100vh]  pt-[9vh]">
 				<div className="w-full h-full flex items-center justify-between  border-border border-b-[1px]  max-w-[1224px] mx-auto">
