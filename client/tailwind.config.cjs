@@ -17,6 +17,7 @@ module.exports = {
 				xs: "550px", // Add a new breakpoint
 				sm: "600px",
 				md: "900px",
+				mdl: "1024px",
 				lg: "1224px",
 				xl: "1536px",
 			},

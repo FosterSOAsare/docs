@@ -68,7 +68,7 @@ const Homepage = () => {
 
 			<SideMenu slideOut={slideOut} toggle={toggle} />
 
-			<section className="w-full lg:h-[100vh] h-auto pt-[12vh] lg:pt-[9vh] px-4 lg:px-0 lg:pb-0">
+			<section className="w-full lg:h-[100vh] h-auto pt-[12vh] lg:pt-[9vh] px-6 sm:px-8 lg:px-0 lg:pb-0">
 				<div className="w-full h-full flex items-center justify-between flex-col lg:flex-row  border-border border-b-[1px]  max-w-screen-lg mx-auto pb-12 lg:pb-0 ">
 					<div className="lg:w-[60%] ">
 						<h1 className="text-4xl sm:text-[60px] w-full  sm:w-[90%]  mx-auto mb-4   sm:leading-[80px] text-center  lg:text-left">Build your best ideas together, in Google Docs</h1>
@@ -115,13 +115,13 @@ const Homepage = () => {
 						))}
 					</section>
 				</section>
-				<aside className="absolute top-2 right-0 hidden md:block">
+				<aside className="absolute top-2 right-0 hidden mdl:block">
 					<img src="https://lh3.googleusercontent.com/LdYwcT1HsIt_MlYbQvGFff1uRr0QTdnDsKVkD4-PqFR0vaPk5MPPGkjkfJmucjam6QGijZ_vwpn3dDtJp7fQvCxyXClNfu8flxJCk1oss7JijH61IPk=w1024" alt="" />
 				</aside>
-				<aside className="absolute top-[26%] -left-2 hidden md:block">
+				<aside className="absolute top-[26%] -left-2 hidden mdl:block">
 					<img src="https://lh3.googleusercontent.com/-_yE8i04XneR2Xbsn9rOZKnWucDzIY60RDFIJa5Cq2-vs8L3nyvRC5HzHVX-BRNWL9-EIg4lrq5L881cWVaaREb7LxZwxQZoycnKYbt9SlEUk6sA8XY=w1024" alt="" />
 				</aside>
-				<aside className="absolute top-[55%] -right-2 hidden md:block">
+				<aside className="absolute top-[55%] -right-2 hidden mdl:block">
 					<img src="https://lh3.googleusercontent.com/XTMYoa9c1pGX9RpR36coczN6guA-am-pY1NCgZSbl5_Mi2QwhKp7VE--dZGE5QomzRJrfoMtkIw1xLZeDFNDPwSq4RoWsrKQZH7Kk142JfgxO_4gIrA=w1024" alt="" />
 				</aside>
 			</section>
