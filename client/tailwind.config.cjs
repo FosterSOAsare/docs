@@ -15,9 +15,9 @@ module.exports = {
 			screens: {
 				xxs: "0px",
 				xs: "550px", // Add a new breakpoint
-				sm: "700px",
+				sm: "600px",
 				md: "900px",
-				lg: "1124px",
+				lg: "1224px",
 				xl: "1536px",
 			},
 			order: {

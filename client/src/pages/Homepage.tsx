@@ -54,7 +54,7 @@ const Homepage = () => {
 	}
 	return (
 		<>
-			<header className="w-full h-16  flex justify-between items-center px-8 border-b-2 border-border fixed bg-white z-10">
+			<header className="w-full h-16  flex justify-between items-center px-3 md:px-8 border-b-2 border-border fixed bg-white z-10">
 				<div className="flex items-center gap-3 ">
 					<button className="w-10 h-10  flex justify-center items-center border-none hover:bg-hover rounded-[4px]" onClick={slideIn}>
 						<AiOutlineMenu size={18} />
@@ -68,29 +68,31 @@ const Homepage = () => {
 
 			<SideMenu slideOut={slideOut} toggle={toggle} />
 
-			<section className="w-full h-[100vh]  pt-[9vh]">
-				<div className="w-full h-full flex items-center justify-between  border-border border-b-[1px]  max-w-[1224px] mx-auto">
-					<div className="w-[50%] ">
-						<h1 className="text-[54px] w-[95%] mb-4 leading-[60px]">Build your best ideas together, in Google Docs</h1>
-						<p className="w-[90%] text-xl text-desc">Create and collaborate on online documents in real-time and from any device.</p>
-						<div className="w-full flex justify-start gap-4 my-12">
-							<a className="w[40%] h-14 text-lg font-medium bg-secondary flex justify-center items-center rounded-[6px] px-6 text-white" href="/">
+			<section className="w-full lg:h-[100vh] h-auto pt-[12vh] lg:pt-[9vh] px-4 lg:px-0 lg:pb-0">
+				<div className="w-full h-full flex items-center justify-between flex-col lg:flex-row  border-border border-b-[1px]  max-w-screen-lg mx-auto pb-12 lg:pb-0 ">
+					<div className="lg:w-[60%] ">
+						<h1 className="text-4xl sm:text-[60px] w-full  sm:w-[90%]  mx-auto mb-4   sm:leading-[80px] text-center  lg:text-left">Build your best ideas together, in Google Docs</h1>
+						<p className="w-[90%] text-md mx-auto text-center lg:text-left sm:text-lg text-desc">Create and collaborate on online documents in real-time and from any device.</p>
+						<div className="w-full flex justify-center lg:justify-start lg:pl-8 gap-4 my-12 flex-col sm:flex-row">
+							<a className="w-3/5 sm:w-auto mx-auto sm:mx-0 h-14 text-lg font-medium bg-secondary flex justify-center items-center rounded-[6px] px-6 sm:px-4 text-white" href="/">
 								Try Docs for Work
 							</a>
-							<a className="w[40%] h-14 text-lg font-medium border-border border-[1px] flex justify-center items-center rounded-[6px] px-6 text-secondary" href="/">
+							<a
+								className="w-3/5 sm:w-auto mx-auto sm:mx-0 h-14 text-lg font-medium border-border border-[1px] flex justify-center items-center rounded-[6px] px-6 text-secondary"
+								href="/">
 								Go to Docs
 							</a>
 						</div>
-						<p>
+						<p className="mx-auto lg:text-left lg:px-8 text-center text-lg text-desc">
 							Don't have an account?
-							<a href="" className="text-secondary ml-6 font-medium">
+							<a href="" className="text-secondary ml-6 font-medium sm:inline block mt-4 sm:mt-0">
 								Sign up for free
 							</a>
 						</p>
 					</div>
-					<div className="w-[50%]  h-[70%] relative overflow-hidden">
+					<div className="w-full sm:w-[90%] md:w-[70%]  h-[300px] sm:h-[450px] md:h-[550px] lg:w-[50%] lg:h-[400px]  relative overflow-hidden md:mt-0 mt-[20px]">
 						<img src={HeroImage} alt="" className="w-full h-full" />
-						<aside className="absolute h-[72.5%] w-[200px] bg-transparent top-[20%] right-[5.1%] ">
+						<aside className="absolute h-[72.5%]  sm:w-[200px] lg:w-[180px] bg-transparent top-[20%] right-[5.1%] ">
 							<img
 								className="w-full h-full"
 								src="https://lh3.googleusercontent.com/8ayBYCLkFBLVGmRSZwoADC9bqlUfjbpFNvcyuQTz09O1XMatRRY67_JUt0_xez8Y0_QU0oUJMkfbEvdXMxQRUkp702kkG7Q-kax6kSHx0KE3gSKSa6i5=s0"
@@ -102,8 +104,8 @@ const Homepage = () => {
 			</section>
 
 			<section className="w-full pt-[30px] relative overflow-hidden">
-				<section className="max-w-[1224px] mx-auto w-full h-full">
-					<a className="mx-auto flex items-center justify-center flex-col p-3 gap-2 rounded-[3px]" href="#features">
+				<section className="max-w-screen-lg mx-auto w-full h-full">
+					<a className="mx-auto flex items-center justify-center flex-col p-3 gap-2 rounded-[3px] " href="#features">
 						<p>See what you can do with Docs</p>
 						<BsChevronDown size={24} />
 					</a>
@@ -113,19 +115,19 @@ const Homepage = () => {
 						))}
 					</section>
 				</section>
-				<aside className="absolute top-2 right-0">
+				<aside className="absolute top-2 right-0 hidden md:block">
 					<img src="https://lh3.googleusercontent.com/LdYwcT1HsIt_MlYbQvGFff1uRr0QTdnDsKVkD4-PqFR0vaPk5MPPGkjkfJmucjam6QGijZ_vwpn3dDtJp7fQvCxyXClNfu8flxJCk1oss7JijH61IPk=w1024" alt="" />
 				</aside>
-				<aside className="absolute top-[26%] -left-2 ">
+				<aside className="absolute top-[26%] -left-2 hidden md:block">
 					<img src="https://lh3.googleusercontent.com/-_yE8i04XneR2Xbsn9rOZKnWucDzIY60RDFIJa5Cq2-vs8L3nyvRC5HzHVX-BRNWL9-EIg4lrq5L881cWVaaREb7LxZwxQZoycnKYbt9SlEUk6sA8XY=w1024" alt="" />
 				</aside>
-				<aside className="absolute top-[55%] -right-2 ">
+				<aside className="absolute top-[55%] -right-2 hidden md:block">
 					<img src="https://lh3.googleusercontent.com/XTMYoa9c1pGX9RpR36coczN6guA-am-pY1NCgZSbl5_Mi2QwhKp7VE--dZGE5QomzRJrfoMtkIw1xLZeDFNDPwSq4RoWsrKQZH7Kk142JfgxO_4gIrA=w1024" alt="" />
 				</aside>
 			</section>
 
 			<section className="bg-background2 w-full h-auto advantages  py-20 ">
-				<div className="max-w-[1224px] mx-auto w-full h-full flex justify-between items-center gap-12">
+				<div className="max-w-screen-lg mx-auto w-full h-full flex justify-between items-center gap-12">
 					{advantages.map((advantage: advantagesType, index: number) => (
 						<HomepageAdvantage key={index} {...advantage} />
 					))}
@@ -133,7 +135,7 @@ const Homepage = () => {
 			</section>
 
 			<section id="security" className=" my-24 relative overflow-hidden">
-				<div className="w-full max-w-[1224px] h-full flex flex-col justify-center items-center mx-auto ">
+				<div className="w-full max-w-screen-lg h-full flex flex-col justify-center items-center mx-auto ">
 					<h3 className="text-[36px] ">Security, compliance, and privacy</h3>
 					<div className="flex items-center justify-between gap-12 my-16">
 						<img src={IsoIecImage} alt="" className="w-16 h-16 rounded-full" />
@@ -191,7 +193,7 @@ const Homepage = () => {
 			</section>
 
 			<section className="my-24 " id="plans">
-				<div className="w-full mx-auto h-full max-w-[1224px] flex items-center justify-center flex-col">
+				<div className="w-full mx-auto h-full max-w-screen-lg flex items-center justify-center flex-col">
 					<h2 className="text-4xl mb-4">Find the plan that’s right for you</h2>
 					<h3 className="text-xl font-medium mb-4">Google Docs is a part of Google Workspace</h3>
 					<p className="font-medium text-md">Every plan includes</p>
@@ -253,7 +255,7 @@ const Homepage = () => {
 			</section>
 
 			<section id="collaborate" className="py-24 relative overflow-hidden">
-				<div className="w-full h-full max-w-[1224px] mx-auto flex justify-center items-center flex-col">
+				<div className="w-full h-full max-w-screen-lg mx-auto flex justify-center items-center flex-col">
 					<h1 className="text-4xl mb-4">Collaborate from anywhere, on any device</h1>
 					<p className="w-[85%] text-desc text-center text-lg">Access, create, and edit your documents wherever you are — from any mobile device, tablet, or computer — even when offline.</p>
 					<div className="mt-6 w-full h-12 flex justify-center gap-3 items-center">
@@ -270,7 +272,7 @@ const Homepage = () => {
 				</aside>
 			</section>
 			<section id="templates" className="py-24 border-border border-b-[1px]">
-				<div className="w-full h-full max-w-[1224px] mx-auto flex justify-center items-center flex-col ">
+				<div className="w-full h-full max-w-screen-lg mx-auto flex justify-center items-center flex-col ">
 					<h1 className="text-4xl mb-4">Get a head start with templates</h1>
 					<p className="w-[82%] text-desc text-center text-lg">
 						Choose from a variety of dashboards, project trackers, and other professionally-designed templates to kick things off quickly.
@@ -294,7 +296,7 @@ const Homepage = () => {
 				</div>
 			</section>
 			<section id="getStarted" className="py-24 border-border relative overflow-hidden">
-				<div className="w-full h-full max-w-[1224px] mx-auto flex justify-center items-center flex-col  ">
+				<div className="w-full h-full max-w-screen-lg mx-auto flex justify-center items-center flex-col  ">
 					<h1 className="text-4xl mb-4">Ready to get started?</h1>
 
 					<div className="flex justify-center gap-4 mt-6">
@@ -320,7 +322,7 @@ const Homepage = () => {
 			</section>
 
 			<footer className="bg-background2 w-full h-auto py-12">
-				<div className="w-full h-full max-w-[1224px]  mx-auto">
+				<div className="w-full h-full max-w-screen-lg  mx-auto">
 					<article className="flex justify-start items-center gap-6 pb-4 border-b-[1px] border-border">
 						<p className="font-medium">
 							Follow our{" "}

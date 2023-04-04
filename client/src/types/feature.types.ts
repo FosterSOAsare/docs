@@ -3,7 +3,8 @@ type featuresType = {
   title: string,
   desc: string,
   imageOrder: number,
-  style?: string
+  style?: string,
+  mobile?: string
 }
 
 export default featuresType
