@@ -4,7 +4,7 @@ import path from "node:path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({ include: ["**/*.tsx", "**/*.ts"] },)],
   build: {
     outDir: "../server/public",
     emptyOutDir: true,
@@ -20,6 +20,8 @@ export default defineConfig({
       "@utils": path.resolve(__dirname, "src", "utils"),
       "@lib": path.resolve(__dirname, "src", "lib"),
       "@assets": path.resolve(__dirname, "src", "assets"),
+      "@data": path.resolve(__dirname, "src", "data"),
     },
-  }
+  },
+
 })

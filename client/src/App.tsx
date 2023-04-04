@@ -1,11 +1,19 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
 import "./App.css";
-import "./styles/output.css";
+import "@styles/output.css";
+
+import Homepage from "./pages/Homepage";
 
 function App() {
-	return <div className="App font-bold">Hello</div>;
+	return (
+		<div className="App">
+			<Routes>
+				<Route path="/" element={<Homepage />}></Route>
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
