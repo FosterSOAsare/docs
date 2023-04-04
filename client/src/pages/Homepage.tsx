@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useState } from "react";
 
 import features from "../data/Features.data";
 import advantages from "../data/Advantages.data";
@@ -11,6 +11,8 @@ import planFeaturesType from "../types/planfeatures";
 import templateTypes from "../types/templates.type";
 import advantagesType from "../types/advantage.types";
 import AddOnsTypes from "../types/add-ons.types";
+import { stateType } from "../types/side-menu.types";
+import toggleFunc from "../reducers/sidemenu.reducer";
 
 import HomepageFeature from "../components/HomepageFeature";
 import HomepageAdvantage from "../components/HomepageAdvantage";
@@ -33,12 +35,28 @@ import PrivacyIcon from "@assets/privacy-icon.svg";
 import PlayStoreIcon from "@assets/google_play.svg";
 import AppStoreIcon from "@assets/app_store.svg";
 
+const initialState: stateType = { slide: null, show: false };
 const Homepage = () => {
+	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
+
+	function slideIn() {
+		toggleDispatchFunc({ type: "show", payload: null });
+		setTimeout(() => {
+			toggleDispatchFunc({ type: "setSlide", payload: "in" });
+		}, 10);
+	}
+
+	function slideOut() {
+		toggleDispatchFunc({ type: "setSlide", payload: "out" });
+		setTimeout(() => {
+			toggleDispatchFunc({ type: "hide", payload: null });
+		}, 500);
+	}
 	return (
 		<>
 			<header className="w-full h-16  flex justify-between items-center px-8 border-b-2 border-border fixed bg-white z-10">
 				<div className="flex items-center gap-3 ">
-					<button className="w-10 h-10  flex justify-center items-center border-none hover:bg-hover rounded-[4px]">
+					<button className="w-10 h-10  flex justify-center items-center border-none hover:bg-hover rounded-[4px]" onClick={slideIn}>
 						<AiOutlineMenu size={18} />
 					</button>
 					<a className="flex items-center gap-1 text-[20px] hover:bg-hover  p-2 rounded-[5px]" href="/ ">
@@ -48,7 +66,7 @@ const Homepage = () => {
 				</div>
 			</header>
 
-			<SideMenu />
+			<SideMenu slideOut={slideOut} toggle={toggle} />
 
 			<section className="w-full h-[100vh]  pt-[9vh]">
 				<div className="w-full h-full flex items-center justify-between  border-border border-b-[1px]  max-w-[1224px] mx-auto">

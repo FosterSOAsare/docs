@@ -1,4 +1,4 @@
-import SideMenuToolsTypes from "../types/side-menu-tools.types"
+import { SideMenuToolsTypes } from "../types/side-menu.types"
 import DocsImage from '@assets/docs.svg'
 import SheetsImage from '@assets/sheets.svg'
 import SlidesImage from '@assets/slides.svg'

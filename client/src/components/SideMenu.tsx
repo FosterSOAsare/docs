@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 import moreTools from "../data/side-menu.data";
+import { stateType } from "../types/side-menu.types";
 
 import LogoIcon from "@assets/docs.svg";
 
-const SideMenu = () => {
+type SideMenuPropsType = {
+	slideOut: () => void;
+	toggle: stateType;
+};
+
+const SideMenu = ({ slideOut, toggle }: SideMenuPropsType) => {
+	// Parent and child are used to be able to check the click's target and close the menu accordingly
+	const parentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
+	const grandParentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
+
+	useEffect(() => {
+		grandParentRef.current.addEventListener("click", setToggle);
+		function setToggle(e: any) {
+			let parent = parentRef.current;
+			const node = e.target as Node;
+			if (!parent.contains(node)) {
+				slideOut();
+			}
+		}
+	}, []);
+
 	return (
-		<aside className="w-full h-[100vh] bg-[rgba(0,0,0,.4)] fixed z-30 top-0 left-0">
-			<article className="w-[30%] bg-white h-full relative">
+		<aside className={`w-full h-[100vh] bg-[rgba(0,0,0,.4)] fixed z-30 top-0 left-0 ${toggle.show ? "block" : "hidden"}`} ref={grandParentRef}>
+			<article className={`w-[30%] bg-white h-full relative transition-all duration-500 ${toggle.slide === "in" ? "left-0" : "-left-[100%]"} `} ref={parentRef}>
 				<div className="gap-3 h-[74%] overflow-auto">
 					<header className="w-full h-16  flex justify-between items-center px-8 border-b-[1px] border-border ">
 						<a className="flex items-center gap-1 text-[20px] rounded-[5px]" href="/ ">
