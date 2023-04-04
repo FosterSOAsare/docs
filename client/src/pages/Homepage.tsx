@@ -126,8 +126,8 @@ const Homepage = () => {
 				</aside>
 			</section>
 
-			<section className="bg-background2 w-full h-auto advantages  py-20 ">
-				<div className="max-w-screen-lg mx-auto w-full h-full flex justify-between items-center gap-12">
+			<section className="bg-background2 w-full h-auto advantages px-12 py-20 ">
+				<div className="max-w-screen-lg mx-auto w-full flex-col sm:flex-row h-full flex justify-between items-center gap-12">
 					{advantages.map((advantage: advantagesType, index: number) => (
 						<HomepageAdvantage key={index} {...advantage} />
 					))}

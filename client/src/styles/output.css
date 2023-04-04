@@ -1001,6 +1001,11 @@ video {
   padding-bottom: 1rem;
 }
 
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
 .pb-12 {
   padding-bottom: 3rem;
 }
@@ -1177,6 +1182,10 @@ video {
     width: auto;
   }
 
+  .sm\:w-\[33\%\] {
+    width: 33%;
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -1252,6 +1261,10 @@ video {
 
   .md\:w-\[70\%\] {
     width: 70%;
+  }
+
+  .md\:w-\[33\%\] {
+    width: 33%;
   }
 
   .md\:flex-row {
