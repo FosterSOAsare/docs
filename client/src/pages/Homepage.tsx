@@ -134,7 +134,7 @@ const Homepage = () => {
 				</div>
 			</section>
 
-			<section id="security" className=" my-24 relative overflow-hidden  px-6 lg:px-12">
+			<section id="security" className="my-12 sm:py-16 md:my-24 relative overflow-hidden  px-6 lg:px-12">
 				<div className="w-full max-w-screen-lg h-full flex flex-col justify-center items-center mx-auto  ">
 					<h3 className="text-3xl md:text-[36px] ">Security, compliance, and privacy</h3>
 					<div className="flex items-center justify-between gap-3 sm:gap-12 my-16">
@@ -192,7 +192,7 @@ const Homepage = () => {
 				</aside>
 			</section>
 
-			<section className="my-24 md:px-10 px-4" id="plans">
+			<section className="my-12 sm:py-8 md:my-24 md:px-10 px-4" id="plans">
 				<div className="w-full mx-auto h-full max-w-screen-lg flex items-center justify-center flex-col">
 					<h2 className="text-2xl w-[80%] text-center md:text-4xl mb-4">Find the plan that’s right for you</h2>
 					<h3 className="text-md w-[80%] text-center md:text-xl font-medium mb-4">Google Docs is a part of Google Workspace</h3>
@@ -223,11 +223,13 @@ const Homepage = () => {
 							})}
 						</div>
 					</article>
-					<article className="w-full">
-						<section className="w-full h-[270px] flex justify-between ">
-							<div className="w-[50%] sm:w-[40%] border-border border-r-[1px] h-full"></div>
-							<div className="w-[25%] sm:w-[30%] border-border border-[1px] h-full border-l-0 p-6 flex items-center flex-col relative bg-red-300">
-								<h3 className="text-xl -rotate-90 md:w-full w-auto bg-green-400 bottom-8  md:bottom-0 md:rotate-0 sm:bottom-26 sm:bottom-12 absolute md:relative">
+					<article className="w-full sticky">
+						<section className="w-full h-[270px] flex justify-between  bg-white sticky top-0">
+							<div className="w-[50%] sm:w-[40%] border-border border-r-[1px] h-full flex items-end pb-8 justify-center">
+								<a className="block md:hidden text-secondary font-bold hover:underline hover:cursor-pointer">Try Docs for Work</a>
+							</div>
+							<div className="w-[25%] sm:w-[30%] border-border border-[1px] h-full border-l-0 p-6 flex items-center flex-col justify-end md:justify-center">
+								<h3 className=" w-[200px] md:w-auto md:text-center text-sm sm:text-xl block -rotate-90  md:rotate-0 relative bottom-20 md:bottom-6 ">
 									{" "}
 									For Personal <span className="hidden md:block"> (Free)</span>{" "}
 								</h3>
@@ -236,8 +238,8 @@ const Homepage = () => {
 									Go to Docs
 								</a>
 							</div>
-							<div className="w-[25%] sm:w-[30%] border-border border-[1px] h-full border-l-0 p-6 flex items-center flex-col relative">
-								<h3 className="text-xl -rotate-90 md:w-full sm:w-auto  md:bottom-0 md:rotate-0 bottom-8 bg-green-400 sm:bottom-20 absolute md:relative">Business Standard</h3>
+							<div className="w-[25%] sm:w-[30%] border-border border-[1px] h-full border-l-0 p-6 flex items-center flex-col justify-end md:justify-center ">
+								<h3 className=" w-[200px] md:w-auto text-sm sm:text-xl block -rotate-90  md:rotate-0 relative bottom-20 md:bottom-6 ">Business Standard</h3>
 								<h1 className="hidden text-4xl text-secondary">$12 USD</h1>
 								<p className="hidden md:block text-center text-sm text-desc">per user / month, 1 year commitment</p>
 								<a className="hidden text-white md:flex justify-center items-center px-6 font-medium h-12 rounded-[3px] bg-secondary mt-6 mb-4 hover:cursor-pointer">Get Started</a>
@@ -275,26 +277,28 @@ const Homepage = () => {
 				</div>
 			</section>
 
-			<section id="collaborate" className="py-24 relative overflow-hidden">
+			<section id="collaborate" className="py-12 sm:py-10 md:py-24 relative overflow-hidden px-4">
 				<div className="w-full h-full max-w-screen-lg mx-auto flex justify-center items-center flex-col">
-					<h1 className="text-4xl mb-4">Collaborate from anywhere, on any device</h1>
-					<p className="w-[85%] text-desc text-center text-lg">Access, create, and edit your documents wherever you are — from any mobile device, tablet, or computer — even when offline.</p>
-					<div className="mt-6 w-full h-12 flex justify-center gap-3 items-center">
-						<a href="https://apps.apple.com/app/google-docs-sync-edit-share/id842842640/?l=en" target="_blank" rel="noreferrer">
-							<img src={PlayStoreIcon} alt="" />
+					<h1 className="w-full sm:w-[90%] text-2xl text-medium sm:text-4xl mb-4 mx-auto  text-center">Collaborate from anywhere, on any device</h1>
+					<p className="w-full sm:w-[80%] mx-auto  text-desc text-center text-lg sm:text-lg">
+						Access, create, and edit your documents wherever you are — from any mobile device, tablet, or computer — even when offline.
+					</p>
+					<div className="mt-6 w-full sm:h-24 h-auto  flex-col sm:flex-row flex justify-center gap-3 items-center">
+						<a href="https://apps.apple.com/app/google-docs-sync-edit-share/id842842640/?l=en" target="_blank" rel="noreferrer" className="w-[50%] sm:w-[20%]">
+							<img src={PlayStoreIcon} alt="" className="w-full h-12" />
 						</a>
-						<a href="https://apps.apple.com/app/google-docs-sync-edit-share/id842842640/?l=en" target="_blank" rel="noreferrer">
-							<img src={AppStoreIcon} alt="" />
+						<a href="https://apps.apple.com/app/google-docs-sync-edit-share/id842842640/?l=en" target="_blank" rel="noreferrer" className="w-[50%] sm:w-[20%]">
+							<img src={AppStoreIcon} alt="" className="w-full" />
 						</a>
 					</div>
 				</div>
-				<aside className="absolute top-[35%] -right-2 ">
+				<aside className="absolute top-[35%] -right-2 hidden lg:block">
 					<img src="https://lh3.googleusercontent.com/hWl6SS7ryc7NY1-OEnUKcLSosWSGWXesIVH-TmBD4AOKVfQL5MzEQuXcy8jFI5NIs2dTftP_J9BpbEJkGiP44CN2YkaRTcZUPVV6M40QLJxPj4WpJI0=w1024" alt="" />
 				</aside>
 			</section>
-			<section id="templates" className="py-24 border-border border-b-[1px] px-6">
+			<section id="templates" className="py-12 md:py-24 sm:py-16 border-border border-b-[1px] px-6">
 				<div className="w-full h-full max-w-screen-lg mx-auto flex justify-center items-center flex-col ">
-					<h1 className="text-xl sm:text-4xl mb-4">Get a head start with templates</h1>
+					<h1 className="text-2xl sm:text-4xl mb-4">Get a head start with templates</h1>
 					<p className="w-[82%] text-desc text-center text-md sm:text-lg">
 						Choose from a variety of dashboards, project trackers, and other professionally-designed templates to kick things off quickly.
 					</p>
@@ -316,7 +320,7 @@ const Homepage = () => {
 					</p>
 				</div>
 			</section>
-			<section id="getStarted" className="py-24 border-border relative overflow-hidden">
+			<section id="getStarted" className="py-12 sm:py-16 md:py-24 border-border relative overflow-hidden">
 				<div className="w-full h-full max-w-screen-lg mx-auto flex justify-center items-center flex-col  ">
 					<h1 className="text-2xl sm:text-4xl mb-4">Ready to get started?</h1>
 
