@@ -318,9 +318,9 @@ const Homepage = () => {
 			</section>
 			<section id="getStarted" className="py-24 border-border relative overflow-hidden">
 				<div className="w-full h-full max-w-screen-lg mx-auto flex justify-center items-center flex-col  ">
-					<h1 className="text-4xl mb-4">Ready to get started?</h1>
+					<h1 className="text-2xl sm:text-4xl mb-4">Ready to get started?</h1>
 
-					<div className="flex justify-center gap-4 mt-6">
+					<div className="flex justify-center gap-4 mt-6 flex-col sm:flex-row w-[60%] sm:full">
 						<a
 							href="https://workspace.google.com/intl/en/features/?utm_source=docsforwork&utm_medium=et&utm_content=trydocsforwork&utm_campaign=footer"
 							target="_blank"
@@ -337,7 +337,7 @@ const Homepage = () => {
 						</a>
 					</div>
 				</div>
-				<aside className="absolute bottom-0 -left-2 ">
+				<aside className="absolute bottom-0 -left-2 hidden lg:block">
 					<img src="https://lh3.googleusercontent.com/5ENDQP8kSi6cTdflVOyjCg-zrUJPQ1EfxYKiEkWkwrSNp8TaqrBmFVpKfhOOQ4tM9ST5D7956nobaowYGzlhfUqIEklaJTeOhJnlCmRGrYnoHmHAMv4=w1024" alt="" />
 				</aside>
 			</section>
