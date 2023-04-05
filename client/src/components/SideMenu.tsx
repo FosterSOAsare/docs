@@ -28,7 +28,7 @@ const SideMenu = ({ slideOut, toggle }: SideMenuPropsType) => {
 
 	return (
 		<aside className={`w-full h-[100vh] bg-[rgba(0,0,0,.4)] fixed z-30 top-0 left-0 ${toggle.show ? "block" : "hidden"}`} ref={grandParentRef}>
-			<article className={`w-[30%] bg-white h-full relative transition-all duration-500 ${toggle.slide === "in" ? "left-0" : "-left-[100%]"} `} ref={parentRef}>
+			<article className={`w-[90%] max-w-sm bg-white h-full relative transition-all duration-500 ${toggle.slide === "in" ? "left-0" : "-left-[100%]"} `} ref={parentRef}>
 				<div className="gap-3 h-[74%] overflow-auto">
 					<header className="w-full h-16  flex justify-between items-center px-8 border-b-[1px] border-border ">
 						<a className="flex items-center gap-1 text-[20px] rounded-[5px]" href="/ ">
