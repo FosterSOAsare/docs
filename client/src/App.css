@@ -17,3 +17,7 @@ html {
 .md\:order-1 {
 	order: 1;
 }
+
+nav .active {
+	color: green;
+}

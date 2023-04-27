@@ -12,7 +12,8 @@ import planFeaturesType from "../types/planfeatures";
 import templateTypes from "../types/templates.type";
 import advantagesType from "../types/advantage.types";
 import AddOnsTypes from "../types/add-ons.types";
-import { stateType, actionType } from "../types/side-menu.types";
+import { stateType } from "../types/side-menu.types";
+import toggleFunc, { slideIn, slideOut } from "../utils/slider.util";
 
 import HomepageFeature from "../components/HomepageFeature";
 import HomepageAdvantage from "../components/HomepageAdvantage";
@@ -39,37 +40,11 @@ const initialState: stateType = { slide: null, show: false };
 const Homepage = () => {
 	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
 
-	function toggleFunc(state: stateType, action: actionType): stateType {
-		switch (action.type) {
-			case "setSlide":
-				return { ...state, slide: action.payload };
-			case "show":
-				return { ...state, show: true };
-			case "hide": {
-				return { ...state, show: false };
-			}
-			default:
-				return state;
-		}
-	}
-	function slideIn() {
-		toggleDispatchFunc({ type: "show", payload: null });
-		setTimeout(() => {
-			toggleDispatchFunc({ type: "setSlide", payload: "in" });
-		}, 10);
-	}
-
-	function slideOut() {
-		toggleDispatchFunc({ type: "setSlide", payload: "out" });
-		setTimeout(() => {
-			toggleDispatchFunc({ type: "hide", payload: null });
-		}, 500);
-	}
 	return (
 		<>
 			<header className="w-full h-16  flex justify-between items-center px-3 md:px-8 border-b-2 border-border fixed bg-white z-10">
 				<div className="flex items-center gap-3 ">
-					<button className="w-10 h-10  flex justify-center items-center border-none hover:bg-hover rounded-[4px]" onClick={slideIn}>
+					<button className="w-10 h-10  flex justify-center items-center border-none hover:bg-hover rounded-[50%]" onClick={() => slideIn(toggleDispatchFunc)}>
 						<AiOutlineMenu size={18} />
 					</button>
 					<a className="flex items-center gap-1 text-[20px] hover:bg-hover  p-2 rounded-[5px]" href="/ ">
@@ -79,7 +54,7 @@ const Homepage = () => {
 				</div>
 			</header>
 
-			<SideMenu slideOut={slideOut} toggle={toggle} />
+			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} />
 
 			<section className="w-full lg:h-[100vh] h-auto pt-[12vh] lg:pt-[9vh] px-6 sm:px-8 lg:px-0 lg:pb-0">
 				<div className="w-full h-full flex items-center justify-between flex-col lg:flex-row  border-border border-b-[1px]  max-w-screen-lg mx-auto pb-12 lg:pb-0 ">
@@ -90,11 +65,11 @@ const Homepage = () => {
 							<a className="w-3/5 sm:w-auto mx-auto sm:mx-0 h-14 text-lg font-medium bg-secondary flex justify-center items-center rounded-[6px] px-6 sm:px-4 text-white" href="/">
 								Try Docs for Work
 							</a>
-							<a
+							<Link
 								className="w-3/5 sm:w-auto mx-auto sm:mx-0 h-14 text-lg font-medium border-border border-[1px] flex justify-center items-center rounded-[6px] px-6 text-secondary"
-								href="/">
+								to="/docs">
 								Go to Docs
-							</a>
+							</Link>
 						</div>
 						<p className="mx-auto lg:text-left lg:px-8 text-center text-lg text-desc">
 							Don't have an account?
@@ -247,9 +222,11 @@ const Homepage = () => {
 									For Personal <span className="hidden md:block"> (Free)</span>{" "}
 								</h3>
 
-								<a className="hidden text-secondary md:flex justify-center items-center px-6 font-medium h-12 rounded-[3px] hover:cursor-pointer border-border hover:border-secondary border-[1px]">
+								<Link
+									to="/docs"
+									className="hidden text-secondary md:flex justify-center items-center px-6 font-medium h-12 rounded-[3px] hover:cursor-pointer border-border hover:border-secondary border-[1px]">
 									Go to Docs
-								</a>
+								</Link>
 							</div>
 							<div className="w-[25%] sm:w-[30%] border-border border-[1px] h-full border-l-0 p-6 flex items-center flex-col justify-end md:justify-center ">
 								<h3 className=" w-[200px] md:w-auto text-sm sm:text-xl block -rotate-90  md:rotate-0 relative bottom-20 md:bottom-6 ">Business Standard</h3>
@@ -345,13 +322,9 @@ const Homepage = () => {
 							className="px-6 h-12 rounded-[5px] bg-secondary font-medium flex justify-center items-center text-white">
 							Try Doc for Work
 						</a>
-						<a
-							href=""
-							target="_blank"
-							rel="noreferrer"
-							className="px-6 h-12 rounded-[5px] text-secondary font-medium border-border border-[1px] hover:border-secondary flex justify-center items-center ">
+						<Link to="/docs" className="px-6 h-12 rounded-[5px] text-secondary font-medium border-border border-[1px] hover:border-secondary flex justify-center items-center ">
 							Go to Docs
-						</a>
+						</Link>
 					</div>
 				</div>
 				<aside className="absolute bottom-0 -left-2 hidden lg:block">

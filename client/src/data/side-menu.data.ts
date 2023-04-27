@@ -31,21 +31,21 @@ const moreTools: SideMenuToolsTypes[] = [
   },
   {
     name: 'Docs',
-    link: 'https://www.google.com/docs/about/',
+    link: '/docs',
     image: DocsImage
   },
   {
     name: 'Sheets',
-    link: 'https://www.google.com/sheets/about/',
+    link: '/sheets',
     image: SheetsImage
   },
   {
     name: 'Slides',
-    link: 'https://www.google.com/slides/about/',
+    link: '/slides',
     image: SlidesImage
   }, {
     name: 'Forms',
-    link: 'https://www.google.com/forms/about/',
+    link: '/forms',
     image: FormsImage
   }
 
