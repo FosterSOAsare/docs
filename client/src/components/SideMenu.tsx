@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import moreTools from "../data/side-menu.data";
 import { stateType } from "../types/side-menu.types";
@@ -70,9 +71,9 @@ const SideMenu = ({ slideOut, toggle }: SideMenuPropsType) => {
 					<a href="" className="block w-full px-4 py-3 mb-2 rounded-[5px] border-border border-[1px] hover:border-secondary text-secondary text-center">
 						Go to Docs
 					</a>
-					<a href="" className="block w-full px-4 pt-3 rounded-[5px] text-secondary text-center">
-						Sign In
-					</a>
+					<Link to="/auth/register" className="block w-full px-4 pt-3 rounded-[5px] text-secondary text-center">
+						Sign Up
+					</Link>
 				</div>
 			</article>
 		</aside>

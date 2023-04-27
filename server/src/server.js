@@ -10,5 +10,3 @@ const PORT = process.env.PORT || 8000;
 		console.log(`Listening on PORT ${PORT}...`);
 	});
 })();
-
-// console.log("dead");

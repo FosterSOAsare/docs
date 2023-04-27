@@ -1,4 +1,5 @@
 import React, { useReducer, useState } from "react";
+import { Link } from "react-router-dom";
 
 import features from "../data/Features.data";
 import advantages from "../data/Advantages.data";
@@ -11,8 +12,7 @@ import planFeaturesType from "../types/planfeatures";
 import templateTypes from "../types/templates.type";
 import advantagesType from "../types/advantage.types";
 import AddOnsTypes from "../types/add-ons.types";
-import { stateType } from "../types/side-menu.types";
-import toggleFunc from "../reducers/sidemenu.reducer";
+import { stateType, actionType } from "../types/side-menu.types";
 
 import HomepageFeature from "../components/HomepageFeature";
 import HomepageAdvantage from "../components/HomepageAdvantage";
@@ -39,6 +39,19 @@ const initialState: stateType = { slide: null, show: false };
 const Homepage = () => {
 	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
 
+	function toggleFunc(state: stateType, action: actionType): stateType {
+		switch (action.type) {
+			case "setSlide":
+				return { ...state, slide: action.payload };
+			case "show":
+				return { ...state, show: true };
+			case "hide": {
+				return { ...state, show: false };
+			}
+			default:
+				return state;
+		}
+	}
 	function slideIn() {
 		toggleDispatchFunc({ type: "show", payload: null });
 		setTimeout(() => {
@@ -85,9 +98,9 @@ const Homepage = () => {
 						</div>
 						<p className="mx-auto lg:text-left lg:px-8 text-center text-lg text-desc">
 							Don't have an account?
-							<a href="" className="text-secondary ml-6 font-medium sm:inline block mt-4 sm:mt-0">
+							<Link to="/auth/register" className="text-secondary ml-6 font-medium sm:inline block mt-4 sm:mt-0">
 								Sign up for free
-							</a>
+							</Link>
 						</p>
 					</div>
 					<div className="w-full sm:w-[90%] md:w-[70%]  h-[300px] sm:h-[450px] md:h-[550px] lg:w-[50%] lg:h-[400px]  relative overflow-hidden md:mt-0 mt-[20px]">
