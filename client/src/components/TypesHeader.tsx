@@ -2,7 +2,8 @@ import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import LogoIcon from "@assets/docs.svg";
 
-const TypesHeader = ({ slideIn }: { slideIn: () => void }) => {
+type headerType = { slideIn: () => void; headerData: any };
+const TypesHeader = ({ slideIn, headerData }: headerType) => {
 	return (
 		<div>
 			<header className="w-full h-16  flex justify-between items-center px-3 md:px-8 border-b-2 border-border fixed bg-white z-10">
@@ -11,8 +12,8 @@ const TypesHeader = ({ slideIn }: { slideIn: () => void }) => {
 						<AiOutlineMenu size={18} />
 					</button>
 					<a className="flex items-center gap-1 text-[20px] hover:bg-hover  p-2 rounded-[5px]" href="/ ">
-						<img src={LogoIcon} alt="" />
-						<p className="font-medium">Google Docs</p>
+						<img src={headerData?.image} alt="" />
+						<p className="font-medium">{headerData?.name}</p>
 					</a>
 				</div>
 			</header>

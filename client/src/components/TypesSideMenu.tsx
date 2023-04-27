@@ -4,15 +4,15 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import moreTools from "../data/side-menu.data";
 import { stateType } from "../types/side-menu.types";
 
-import LogoIcon from "@assets/docs.svg";
 import DriveImage from "@assets/drive.svg";
 
 type SideMenuPropsType = {
 	slideOut: () => void;
 	toggle: stateType;
+	headerData: { name: string; image: string };
 };
 
-const TypesSideMenu = ({ slideOut, toggle }: SideMenuPropsType) => {
+const TypesSideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
 	// Parent and child are used to be able to check the click's target and close the menu accordingly
 	const parentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
 	const grandParentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
@@ -39,8 +39,7 @@ const TypesSideMenu = ({ slideOut, toggle }: SideMenuPropsType) => {
 				<div className="gap-3 h-[100%] overflow-auto">
 					<header className="w-full h-16  flex justify-between items-center px-8 border-b-[1px] border-border ">
 						<a className="flex items-center gap-1 text-[20px] rounded-[5px]" href="/ ">
-							<img src={LogoIcon} alt="" />
-							<p className="font-medium">Google Docs</p>
+							<p className="font-medium">Google {headerData?.name}</p>
 						</a>
 					</header>
 
