@@ -223,8 +223,8 @@ const Homepage = () => {
 							})}
 						</div>
 					</article>
-					<article className="w-full sticky">
-						<section className="w-full h-[270px] flex justify-between  bg-white sticky top-0">
+					<article className="w-full ">
+						<section className="w-full h-[270px] flex justify-between  bg-white md:relative sticky top-[65px]">
 							<div className="w-[50%] sm:w-[40%] border-border border-r-[1px] h-full flex items-end pb-8 justify-center">
 								<a className="block md:hidden text-secondary font-bold hover:underline hover:cursor-pointer">Try Docs for Work</a>
 							</div>
@@ -285,7 +285,7 @@ const Homepage = () => {
 					</p>
 					<div className="mt-6 w-full sm:h-24 h-auto  flex-col sm:flex-row flex justify-center gap-3 items-center">
 						<a href="https://apps.apple.com/app/google-docs-sync-edit-share/id842842640/?l=en" target="_blank" rel="noreferrer" className="w-[50%] sm:w-[20%]">
-							<img src={PlayStoreIcon} alt="" className="w-full h-12" />
+							<img src={PlayStoreIcon} alt="" className="w-full" />
 						</a>
 						<a href="https://apps.apple.com/app/google-docs-sync-edit-share/id842842640/?l=en" target="_blank" rel="noreferrer" className="w-[50%] sm:w-[20%]">
 							<img src={AppStoreIcon} alt="" className="w-full" />
