@@ -1,9 +1,9 @@
-import ProjectImage from '../assets/project.jpg'
-import SalesImage from '../assets/sales.jpg'
-import RecipesImage from '../assets/recipes.jpg'
-import ReportsImage from '../assets/reports.jpg'
+import ProjectImage from '../../assets/project.jpg'
+import SalesImage from '../../assets/sales.jpg'
+import RecipesImage from '../../assets/recipes.jpg'
+import ReportsImage from '../../assets/reports.jpg'
 
-import templateTypes from '../types/templates.type'
+import templateTypes from '../../types/templates.type'
 
 const templates: templateTypes[] = [
   {
