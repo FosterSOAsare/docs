@@ -4,7 +4,10 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import "@styles/output.css";
 
-import Homepage from "./pages/Homepage";
+import DocsAbout from "./pages/About/Docs";
+import SheetsAbout from "./pages/About/Sheets";
+import SlidesAbout from "./pages/About/Slides";
+import FormsAbout from "./pages/About/Forms";
 import RegisterPage from "./pages/Register";
 import LoginPage from "./pages/Login";
 import DocsPage from "./pages/Docs/Docs";
@@ -17,7 +20,13 @@ function App() {
 	return (
 		<div className="App">
 			<Routes>
-				<Route path="/" element={<Homepage />}></Route>
+				<Route path="/" element={<DocsAbout />}></Route>
+				<Route>
+					<Route path="/docs/about" element={<DocsAbout />}></Route>
+					<Route path="/sheets/about" element={<SheetsAbout />}></Route>
+					<Route path="/forms/about" element={<FormsAbout />}></Route>
+					<Route path="/slides/about" element={<SlidesAbout />}></Route>
+				</Route>
 				<Route element={<TypesLayout />}>
 					<Route path="/docs" element={<DocsPage />}></Route>
 					<Route path="/sheets" element={<Sheets />}></Route>

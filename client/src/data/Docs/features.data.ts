@@ -6,7 +6,7 @@ import ConnectMobile from "@assets/connect-mobile.jpg";
 import Collaboration from "@assets/collaboration.jpg";
 import CollaborationMobile from "@assets/collaboration-mobile.jpg";
 
-import featuresType from "../types/feature.types";
+import featuresType from "../../types/feature.types";
 
 const features: featuresType[] = [
 	{

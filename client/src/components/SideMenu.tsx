@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import moreTools from "../data/side-menu.data";
 import { stateType } from "../types/side-menu.types";
 
-import LogoIcon from "@assets/docs.svg";
-
 type SideMenuPropsType = {
 	slideOut: () => void;
 	toggle: stateType;
+	name: string;
+	LogoIcon: string;
 };
 
-const SideMenu = ({ slideOut, toggle }: SideMenuPropsType) => {
+const SideMenu = ({ slideOut, toggle, name, LogoIcon }: SideMenuPropsType) => {
 	// Parent and child are used to be able to check the click's target and close the menu accordingly
 	const parentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
 	const grandParentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
@@ -34,20 +34,20 @@ const SideMenu = ({ slideOut, toggle }: SideMenuPropsType) => {
 					<header className="w-full h-16  flex justify-between items-center px-8 border-b-[1px] border-border ">
 						<a className="flex items-center gap-1 text-[20px] rounded-[5px]" href="/ ">
 							<img src={LogoIcon} alt="" />
-							<p className="font-medium">Google Docs</p>
+							<p className="font-medium">Google {name}</p>
 						</a>
 					</header>
 					<nav className="w-full h-auto mt-8 px-8">
-						<a href="" className="block mb-6 font-medium">
+						<a href="#hero" className="block mb-6 font-medium">
 							Overview
 						</a>
-						<a href="" className="block mb-6 font-medium">
+						<a href="#features" className="block mb-6 font-medium">
 							Features
 						</a>
-						<a href="" className="block mb-6 font-medium">
+						<a href="#security" className="block mb-6 font-medium">
 							Security
 						</a>
-						<a href="" className="block mb-6 font-medium">
+						<a href="#plans" className="block mb-6 font-medium">
 							Pricing
 						</a>
 					</nav>
@@ -65,12 +65,12 @@ const SideMenu = ({ slideOut, toggle }: SideMenuPropsType) => {
 					</section>
 				</div>
 				<div className="absolute bottom-0 left-0 bg-white w-full h-auto p-3">
-					<a href="" className="block w-full px-4 py-3 mb-2 rounded-[5px] bg-secondary text-white text-center">
-						Try Docs for Work
+					<a href="/premium/info" className="block w-full px-4 py-3 mb-2 rounded-[5px] bg-secondary text-white text-center">
+						Try {name} for Work
 					</a>
-					<a href="" className="block w-full px-4 py-3 mb-2 rounded-[5px] border-border border-[1px] hover:border-secondary text-secondary text-center">
-						Go to Docs
-					</a>
+					<Link to={`/${name.toLowerCase()}`} className="block w-full px-4 py-3 mb-2 rounded-[5px] border-border border-[1px] hover:border-secondary text-secondary text-center">
+						Go to {name}
+					</Link>
 					<Link to="/auth/register" className="block w-full px-4 pt-3 rounded-[5px] text-secondary text-center">
 						Sign Up
 					</Link>

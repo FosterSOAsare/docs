@@ -2,7 +2,7 @@ import StayProductive from '@assets/stay-productive.svg'
 import AddOns from '@assets/add-ons.svg'
 import FreshContent from '@assets/fresh-content.svg'
 
-import advantagesType from '../types/advantage.types'
+import advantagesType from '../../types/advantage.types'
 
 const advantages: advantagesType[] = [
   {
