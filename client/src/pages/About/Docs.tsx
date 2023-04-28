@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 
 import features from "../../data/Docs/features.data";
 import advantages from "../../data/Docs/Advantages.data";
-import templates from "../../data/templates.data";
+import templates from "../../data/Docs/templates.data";
 
 import toggleFunc, { slideIn, slideOut, initialState } from "../../utils/slider.util";
 
@@ -44,7 +44,12 @@ const DocsAbout = () => {
 				playStoreLink="https://apps.apple.com/app/google-docs-sync-edit-share/id842842640/?l=en"
 			/>
 
-			<Templates templates={templates} name="Docs" link="https://docs.google.com/document/u/0/?ftv=1&tgif=c" />
+			<Templates
+				templates={templates}
+				name="Docs"
+				link="https://docs.google.com/document/u/0/?ftv=1&tgif=c"
+				desc="Access, create, and edit your documents wherever you are — from any mobile device, tablet, or computer — even when offline."
+			/>
 			<GetStarted name="Docs" />
 
 			<Footer />
