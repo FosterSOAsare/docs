@@ -10,7 +10,7 @@ const Plans = ({ name }: { name: string }) => {
 		<section className="my-12 sm:py-8 md:my-24 md:px-10 px-4" id="plans">
 			<div className="w-full mx-auto h-full max-w-screen-lg flex items-center justify-center flex-col">
 				<h2 className="text-2xl w-[80%] text-center md:text-4xl mb-4">Find the plan that’s right for you</h2>
-				<h3 className="text-md w-[80%] text-center md:text-xl font-medium mb-4">Google Docs is a part of Google Workspace</h3>
+				<h3 className="text-md w-[80%] text-center md:text-xl font-normal mb-4">Google {name} is a part of Google Workspace</h3>
 				<p className="font-medium text-md">Every plan includes</p>
 				<article className="h-auto sm:h-[70px]  my-4 flex flex-col sm:flex-row justify-center gap-6">
 					<div className="flex justify-center md:gap-6 gap-4">
