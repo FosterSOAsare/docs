@@ -11,7 +11,6 @@ import FormsAbout from "./pages/About/Forms";
 import RegisterPage from "./pages/Register";
 import LoginPage from "./pages/Login";
 import DocsPage from "./pages/MainPages/Docs";
-import TypesLayout from "./components/Layouts/Types";
 import Sheets from "./pages/MainPages/Sheets";
 import Forms from "./pages/MainPages/Forms";
 import Slides from "./pages/MainPages/Slides";
@@ -27,7 +26,7 @@ function App() {
 					<Route path="/forms/about" element={<FormsAbout />}></Route>
 					<Route path="/slides/about" element={<SlidesAbout />}></Route>
 				</Route>
-				<Route element={<TypesLayout />}>
+				<Route>
 					<Route path="/docs" element={<DocsPage />}></Route>
 					<Route path="/sheets" element={<Sheets />}></Route>
 					<Route path="/forms" element={<Forms />}></Route>

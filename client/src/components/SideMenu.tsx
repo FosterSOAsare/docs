@@ -1,20 +1,23 @@
 import React, { useRef, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import moreTools from "../data/side-menu.data";
+import pages from "../data/main-side-menu";
 import { stateType } from "../types/side-menu.types";
+
+import DriveImage from "@assets/drive.svg";
 
 type SideMenuPropsType = {
 	slideOut: () => void;
 	toggle: stateType;
-	name: string;
-	LogoIcon: string;
+	headerData: { name: string; image: string };
 };
 
-const SideMenu = ({ slideOut, toggle, name, LogoIcon }: SideMenuPropsType) => {
+const SideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
 	// Parent and child are used to be able to check the click's target and close the menu accordingly
 	const parentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
 	const grandParentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
+	const location = useLocation();
 
 	useEffect(() => {
 		grandParentRef.current.addEventListener("click", setToggle);
@@ -27,65 +30,64 @@ const SideMenu = ({ slideOut, toggle, name, LogoIcon }: SideMenuPropsType) => {
 		}
 	}, []);
 
+	useEffect(() => {
+		slideOut();
+	}, [location]);
+
 	return (
 		<aside className={`w-full h-[100vh] bg-[rgba(0,0,0,.4)] fixed z-30 top-0 left-0 ${toggle.show ? "block" : "hidden"}`} ref={grandParentRef}>
-			<article className={`w-[90%] max-w-sm bg-white h-full relative transition-all duration-500 ${toggle.slide === "in" ? "left-0" : "-left-[100%]"} `} ref={parentRef}>
-				<div className="gap-3 h-[74%] overflow-auto">
+			<article className={`w-[90%] max-w-xs bg-white  h-full relative transition-all duration-500 ${toggle.slide === "in" ? "left-0" : "-left-[100%]"} `} ref={parentRef}>
+				<div className="gap-3 h-[100%] overflow-auto">
 					<header className="w-full h-16  flex justify-between items-center px-8 border-b-[1px] border-border ">
-						<a className="flex items-center gap-1 text-[20px] rounded-[5px]" href="/ ">
-							<img src={LogoIcon} alt="" />
-							<p className="font-medium">Google {name}</p>
-						</a>
+						<Link className="flex items-center gap-1 text-[20px] rounded-[5px]" to="/">
+							<p className="font-medium">Google {headerData?.name}</p>
+						</Link>
 					</header>
-					<nav className="w-full h-auto mt-8 px-8">
-						<a href="#hero" className="block mb-6 font-medium">
-							Overview
-						</a>
-						<a href="#features" className="block mb-6 font-medium">
-							Features
-						</a>
-						<a href="#security" className="block mb-6 font-medium">
-							Security
-						</a>
-						<a href="#plans" className="block mb-6 font-medium">
-							Pricing
-						</a>
-					</nav>
 
-					<section className="w-full px-8">
-						<h3 className="mb-2">More tools</h3>
+					<section className="w-full px-4 pt-8 border-b-[2px] pb-2">
 						<nav>
-							{moreTools.map((tool, index) => {
-								if (index > 3) {
-									return (
-										<NavLink key={index} to={tool.link} className="flex w-full py-2  hover:bg-[#F8F9FA] rounded-[35px] mb-4 justify-start items-center px-4 gap-4 font-medium">
-											<img src={tool.image} alt="" />
-											<p>{tool.name}</p>
-										</NavLink>
-									);
-								}
-								if (index < 3) {
-									return (
-										<a key={index} href={tool.link} className="flex w-full py-2   hover:bg-[#F8F9FA] rounded-[35px] mb-4 justify-start items-center px-4 gap-4 font-medium">
-											<img src={tool.image} alt="" />
-											<p>{tool.name}</p>
-										</a>
-									);
-								}
-							})}
+							{pages.map((tool, index) => (
+								<NavLink key={index} to={tool.link} className="flex w-full py-2  hover:bg-[#F8F9FA] rounded-[35px] mb-4 justify-start items-center px-4 gap-4 font-medium">
+									<img src={tool.image} alt="" />
+									<p>{tool.name}</p>
+								</NavLink>
+							))}
 						</nav>
 					</section>
-				</div>
-				<div className="absolute bottom-0 left-0 bg-white w-full h-auto p-3">
-					<a href="/premium/info" className="block w-full px-4 py-3 mb-2 rounded-[5px] bg-secondary text-white text-center">
-						Try {name} for Work
-					</a>
-					<Link to={`/${name.toLowerCase()}`} className="block w-full px-4 py-3 mb-2 rounded-[5px] border-border border-[1px] hover:border-secondary text-secondary text-center">
-						Go to {name}
-					</Link>
-					<Link to="/auth/register" className="block w-full px-4 pt-3 rounded-[5px] text-secondary text-center">
-						Sign Up
-					</Link>
+					<section className="w-full px-4 pt-4 border-b-[2px] pb-2">
+						<nav>
+							<div className="flex w-full py-2  hover:bg-[#F8F9FA] rounded-[35px] mb-2 justify-start items-center px-4 gap-4 font-medium">
+								<img alt="" />
+								<p>Settings</p>
+							</div>
+							<div className="flex w-full py-2  hover:bg-[#F8F9FA] rounded-[35px] mb-2 justify-start items-center px-4 gap-4 font-medium">
+								<img alt="" />
+								<p>Help & Feedback</p>
+							</div>
+						</nav>
+					</section>
+					<section className="w-full px-4 pt-4 border-b-[2px] pb-2">
+						<nav>
+							<a href={"https://www.google.com/drive/?hl=en"} className="flex w-full py-2  hover:bg-[#F8F9FA] rounded-[35px] mb-2 justify-start items-center px-4 gap-4 font-medium">
+								<img src={DriveImage} alt="" />
+								<p>Drive</p>
+							</a>
+						</nav>
+					</section>
+					<section className="w-full h-auto px-4 mt-[40px]">
+						<ul className=" flex items-center justify-center gap-[20px]">
+							<li>
+								<a href="https://policies.google.com/privacy?hl=en" className="opacity-70 hover:opacity-100" target="_blank" rel="noreferrer">
+									Privacy Policy
+								</a>
+							</li>
+							<li>
+								<a href="https://policies.google.com/terms?hl=en" className="opacity-70 hover:opacity-100" target="_blank" rel="noreferrer">
+									Terms of service{" "}
+								</a>
+							</li>
+						</ul>
+					</section>
 				</div>
 			</article>
 		</aside>

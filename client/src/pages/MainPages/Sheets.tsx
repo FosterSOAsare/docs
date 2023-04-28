@@ -1,10 +1,17 @@
-import React, { useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
-
+import { useEffect, useReducer, useState } from "react";
 import SheetsImage from "@assets/sheets.svg";
+import Header from "../../components/Header";
+import SideMenu from "../../components/SideMenu";
+import toggleFunc, { slideIn, slideOut, initialState } from "../../utils/slider.util";
+
+type mainPageType = {
+	name: string;
+	image: string;
+};
 
 const Sheets = () => {
-	const { setHeaderData } = useOutletContext<any>();
+	const [headerData, setHeaderData] = useState<mainPageType>({ name: "", image: "" });
+	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
 
 	useEffect(() => {
 		setHeaderData({
@@ -12,7 +19,12 @@ const Sheets = () => {
 			image: SheetsImage,
 		});
 	}, []);
-	return <div>Sheets</div>;
+	return (
+		<>
+			<Header slideIn={() => slideIn(toggleDispatchFunc)} headerData={headerData} />
+			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} headerData={headerData} />
+		</>
+	);
 };
 
 export default Sheets;

@@ -6,7 +6,7 @@ import templates from "../../data/Slides/templates.data";
 
 import toggleFunc, { slideIn, slideOut, initialState } from "../../utils/slider.util";
 
-import SideMenu from "../../components/SideMenu";
+import SideMenu from "../../components/About/SideMenu";
 import Hero from "../../components/About/Hero";
 import Header from "../../components/About/Header";
 import Plans from "../../components/About/Plans";

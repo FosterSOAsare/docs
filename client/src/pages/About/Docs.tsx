@@ -6,7 +6,7 @@ import templates from "../../data/Docs/templates.data";
 
 import toggleFunc, { slideIn, slideOut, initialState } from "../../utils/slider.util";
 
-import SideMenu from "../../components/SideMenu";
+import SideMenu from "../../components/About/SideMenu";
 import Hero from "../../components/About/Hero";
 import Header from "../../components/About/Header";
 import Plans from "../../components/About/Plans";
@@ -29,7 +29,7 @@ const DocsAbout = () => {
 		<>
 			<Header LogoIcon={LogoIcon} slideIn={slideIn} toggleDispatchFunc={toggleDispatchFunc} name="Docs" />
 
-			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} name="Docs" LogoIcon={LogoIcon} />
+			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} headerData={{ name: "Docs", image: LogoIcon }} />
 
 			<Hero title="Build your best ideas together, in Google Docs" desc="Create and collaborate on online documents in real-time and from any device." name="Docs" image={HeroImage} />
 
