@@ -29,7 +29,7 @@ const SheetsAbout = () => {
 		<>
 			<Header LogoIcon={LogoIcon} slideIn={slideIn} toggleDispatchFunc={toggleDispatchFunc} name="Sheets" />
 
-			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} name="Sheets" LogoIcon={LogoIcon} />
+			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} headerData={{ name: "Sheets", image: LogoIcon }} />
 
 			<Hero title="Make data-driven decisions, in Google Sheets" desc="Create and collaborate on online documents in real-time and from any device." name="Sheets" image={HeroImage} />
 

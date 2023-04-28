@@ -29,7 +29,7 @@ const SlidesAbout = () => {
 		<>
 			<Header LogoIcon={LogoIcon} slideIn={slideIn} toggleDispatchFunc={toggleDispatchFunc} name="Slides" />
 
-			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} name="Slides" LogoIcon={LogoIcon} />
+			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} headerData={{ name: "Slides", image: LogoIcon }} />
 
 			<Hero title="Tell impactful stories, with Google Slides" desc="Create and collaborate on online documents in real-time and from any device." name="Slides" image={HeroImage} />
 

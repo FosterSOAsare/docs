@@ -29,7 +29,7 @@ const FormsAbout = () => {
 		<>
 			<Header LogoIcon={LogoIcon} slideIn={slideIn} toggleDispatchFunc={toggleDispatchFunc} name="Forms" />
 
-			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} name="Forms" LogoIcon={LogoIcon} />
+			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} headerData={{ name: "Forms", image: LogoIcon }} />
 
 			<Hero title="Get insights quickly, with Google Forms" desc="Easily create and share online forms and surveys, and analyze responses in real-time." name="Forms" image={HeroImage} />
 
