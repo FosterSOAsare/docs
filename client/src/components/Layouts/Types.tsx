@@ -7,10 +7,6 @@ import { stateType } from "../../types/side-menu.types";
 import TypesHeader from "../TypesHeader";
 import TypesSideMenu from "../TypesSideMenu";
 
-// type categoriesDataTypes = }{
-
-// }
-
 const TypesLayout = () => {
 	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
 	const [headerData, setHeaderData] = useState({ name: "", image: "" });

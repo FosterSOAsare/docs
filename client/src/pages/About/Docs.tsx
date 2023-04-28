@@ -1,23 +1,23 @@
 import React, { useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 
-import features from "../data/Features.data";
-import advantages from "../data/Advantages.data";
-import planFeatures from "../data/plans.data";
-import addedSoftwares from "../data/add-ons.data";
-import templates from "../data/templates.data";
+import features from "../../data/Features.data";
+import advantages from "../../data/Advantages.data";
+import planFeatures from "../../data/plans.data";
+import addedSoftwares from "../../data/add-ons.data";
+import templates from "../../data/templates.data";
 
-import featuresType from "../types/feature.types";
-import planFeaturesType from "../types/planfeatures";
-import templateTypes from "../types/templates.type";
-import advantagesType from "../types/advantage.types";
-import AddOnsTypes from "../types/add-ons.types";
-import { stateType } from "../types/side-menu.types";
-import toggleFunc, { slideIn, slideOut } from "../utils/slider.util";
+import featuresType from "../../types/feature.types";
+import planFeaturesType from "../../types/planfeatures";
+import templateTypes from "../../types/templates.type";
+import advantagesType from "../../types/advantage.types";
+import AddOnsTypes from "../../types/add-ons.types";
+import { stateType } from "../../types/side-menu.types";
+import toggleFunc, { slideIn, slideOut } from "../../utils/slider.util";
 
-import HomepageFeature from "../components/HomepageFeature";
-import HomepageAdvantage from "../components/HomepageAdvantage";
-import SideMenu from "../components/SideMenu";
+import HomepageFeature from "../../components/HomepageFeature";
+import HomepageAdvantage from "../../components/HomepageAdvantage";
+import SideMenu from "../../components/SideMenu";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";

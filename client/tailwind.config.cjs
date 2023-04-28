@@ -11,6 +11,7 @@ module.exports = {
 				background3: "#343942",
 				white: "#FFFFFF",
 				hover: "#ebebeb",
+				search: "#f1f3f4",
 			},
 			screens: {
 				xxs: "0px",
@@ -24,6 +25,9 @@ module.exports = {
 			order: {
 				first: 1,
 				second: 2, // Add a new breakpoint
+			},
+			boxShadow: {
+				custom: "0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 3px 1px rgba(65, 69, 73, 0.15)",
 			},
 		},
 	},

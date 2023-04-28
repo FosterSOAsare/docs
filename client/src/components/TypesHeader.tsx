@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import LogoIcon from "@assets/docs.svg";
+
+import { AiOutlineSearch } from "react-icons/ai";
 
 type headerType = { slideIn: () => void; headerData: any };
 const TypesHeader = ({ slideIn, headerData }: headerType) => {
+	const [searchFocus, setSearchFocus] = useState(false);
 	return (
 		<div>
-			<header className="w-full h-16  flex justify-between items-center px-3 md:px-8 border-b-2 border-border fixed bg-white z-10">
+			<header className="w-full h-16  flex justify-between items-center px-3 md:px-8   fixed bg-white z-10">
 				<div className="flex items-center gap-3 ">
 					<button className="w-10 h-10  flex justify-center items-center border-none hover:bg-hover rounded-[50%]" onClick={() => slideIn()}>
 						<AiOutlineMenu size={18} />
@@ -16,6 +18,20 @@ const TypesHeader = ({ slideIn, headerData }: headerType) => {
 						<p className="font-medium">{headerData?.name}</p>
 					</a>
 				</div>
+				<div className={`group w-[50%] h-[70%] rounded-[10px] ${searchFocus ? " shadow-custom" : "bg-search"} flex items-center justify-start px-4 gap-4`}>
+					<div className="w-8 h-8 hover:bg-hover rounded-full flex items-center justify-center">
+						<AiOutlineSearch />
+					</div>
+					<input
+						type="text"
+						placeholder="Search"
+						className="w-full h-[90%] text-md focus:outline-0 bg-transparent border-none"
+						onFocus={() => setSearchFocus(true)}
+						onBlur={() => setSearchFocus(false)}
+					/>
+				</div>
+
+				<div className="profile w-10 rounded-full h-10 bg-red-400 hover:shadow-custom"></div>
 			</header>
 		</div>
 	);
