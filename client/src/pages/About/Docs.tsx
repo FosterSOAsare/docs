@@ -42,6 +42,7 @@ const DocsAbout = () => {
 			<Collaborate
 				appStoreLink="https://apps.apple.com/app/google-docs-sync-edit-share/id842842640/?l=en"
 				playStoreLink="https://apps.apple.com/app/google-docs-sync-edit-share/id842842640/?l=en"
+				point="documents "
 			/>
 
 			<Templates

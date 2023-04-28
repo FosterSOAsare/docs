@@ -42,6 +42,7 @@ const SheetsAbout = () => {
 			<Collaborate
 				appStoreLink="https://apps.apple.com/app/google-sheets/id842849113/?l=en"
 				playStoreLink="https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.sheets&hl=en"
+				point="spreadsheets "
 			/>
 
 			<Templates
