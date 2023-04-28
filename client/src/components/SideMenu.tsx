@@ -39,7 +39,7 @@ const SideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
 			<article className={`w-[90%] max-w-xs bg-white  h-full relative transition-all duration-500 ${toggle.slide === "in" ? "left-0" : "-left-[100%]"} `} ref={parentRef}>
 				<div className="gap-3 h-[100%] overflow-auto">
 					<header className="w-full h-16  flex justify-between items-center px-8 border-b-[1px] border-border ">
-						<Link className="flex items-center gap-1 text-[20px] rounded-[5px]" to="/">
+						<Link className="flex items-center gap-1 text-[20px] rounded-[5px]" to={`/${headerData?.name.toLowerCase()}/about`}>
 							<p className="font-medium">Google {headerData?.name}</p>
 						</Link>
 					</header>
