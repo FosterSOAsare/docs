@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import moreTools from "../data/side-menu.data";
 import { stateType } from "../types/side-menu.types";
@@ -55,12 +55,24 @@ const SideMenu = ({ slideOut, toggle, name, LogoIcon }: SideMenuPropsType) => {
 					<section className="w-full px-8">
 						<h3 className="mb-2">More tools</h3>
 						<nav>
-							{moreTools.map((tool, index) => (
-								<a key={index} href={tool.link} className="flex w-full py-2  hover:bg-[#F8F9FA] rounded-[35px] mb-4 justify-start items-center px-4 gap-4 font-medium">
-									<img src={tool.image} alt="" />
-									<p>{tool.name}</p>
-								</a>
-							))}
+							{moreTools.map((tool, index) => {
+								if (index > 3) {
+									return (
+										<NavLink key={index} to={tool.link} className="flex w-full py-2  hover:bg-[#F8F9FA] rounded-[35px] mb-4 justify-start items-center px-4 gap-4 font-medium">
+											<img src={tool.image} alt="" />
+											<p>{tool.name}</p>
+										</NavLink>
+									);
+								}
+								if (index < 3) {
+									return (
+										<a key={index} href={tool.link} className="flex w-full py-2   hover:bg-[#F8F9FA] rounded-[35px] mb-4 justify-start items-center px-4 gap-4 font-medium">
+											<img src={tool.image} alt="" />
+											<p>{tool.name}</p>
+										</a>
+									);
+								}
+							})}
 						</nav>
 					</section>
 				</div>
