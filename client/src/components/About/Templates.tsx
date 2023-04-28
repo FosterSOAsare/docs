@@ -1,5 +1,5 @@
 import React from "react";
-import templateTypes from "../../../types/templates.type";
+import templateTypes from "../../types/templates.type";
 
 const Templates = ({ templates, name, link, desc }: { templates: templateTypes[]; name: string; link: string; desc: string }) => {
 	return (

@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-import moreTools from "../data/side-menu.data";
-import { stateType } from "../types/side-menu.types";
+import moreTools from "../../data/side-menu.data";
+import pages from "../../data/main-side-menu";
+import { stateType } from "../../types/side-menu.types";
 
 import DriveImage from "@assets/drive.svg";
 
@@ -12,7 +13,7 @@ type SideMenuPropsType = {
 	headerData: { name: string; image: string };
 };
 
-const TypesSideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
+const SideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
 	// Parent and child are used to be able to check the click's target and close the menu accordingly
 	const parentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
 	const grandParentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
@@ -35,7 +36,7 @@ const TypesSideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
 
 	return (
 		<aside className={`w-full h-[100vh] bg-[rgba(0,0,0,.4)] fixed z-30 top-0 left-0 ${toggle.show ? "block" : "hidden"}`} ref={grandParentRef}>
-			<article className={`w-[90%] max-w-sm bg-white h-full relative transition-all duration-500 ${toggle.slide === "in" ? "left-0" : "-left-[100%]"} `} ref={parentRef}>
+			<article className={`w-[90%] max-w-xs bg-white  h-full relative transition-all duration-500 ${toggle.slide === "in" ? "left-0" : "-left-[100%]"} `} ref={parentRef}>
 				<div className="gap-3 h-[100%] overflow-auto">
 					<header className="w-full h-16  flex justify-between items-center px-8 border-b-[1px] border-border ">
 						<a className="flex items-center gap-1 text-[20px] rounded-[5px]" href="/ ">
@@ -45,16 +46,12 @@ const TypesSideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
 
 					<section className="w-full px-4 pt-8 border-b-[2px] pb-2">
 						<nav>
-							{moreTools.map((tool, index) => {
-								if (index > 3) {
-									return (
-										<NavLink key={index} to={tool.link} className="flex w-full py-2  hover:bg-[#F8F9FA] rounded-[35px] mb-2 justify-start items-center px-4 gap-4 font-medium">
-											<img src={tool.image} alt="" />
-											<p>{tool.name}</p>
-										</NavLink>
-									);
-								}
-							})}
+							{pages.map((tool, index) => (
+								<NavLink key={index} to={tool.link} className="flex w-full py-2  hover:bg-[#F8F9FA] rounded-[35px] mb-2 justify-start items-center px-4 gap-4 font-medium">
+									<img src={tool.image} alt="" />
+									<p>{tool.name}</p>
+								</NavLink>
+							))}
 						</nav>
 					</section>
 					<section className="w-full px-4 pt-4 border-b-[2px] pb-2">
@@ -97,4 +94,4 @@ const TypesSideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
 	);
 };
 
-export default TypesSideMenu;
+export default SideMenu;

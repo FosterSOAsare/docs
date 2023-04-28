@@ -1,6 +1,6 @@
 import React from "react";
-import HomepageFeature from "../../../components/HomepageFeature";
-import featuresType from "../../../types/feature.types";
+import HomepageFeature from "./Feature";
+import featuresType from "../../types/feature.types";
 
 import { BsChevronDown } from "react-icons/bs";
 

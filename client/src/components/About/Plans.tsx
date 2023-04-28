@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import planFeatures from "../../../data/plans.data";
-import planFeaturesType from "../../../types/planfeatures";
-import addedSoftwares from "../../../data/add-ons.data";
-import AddOnsTypes from "../../../types/add-ons.types";
+import planFeatures from "../../data/plans.data";
+import planFeaturesType from "../../types/planfeatures";
+import addedSoftwares from "../../data/add-ons.data";
+import AddOnsTypes from "../../types/add-ons.types";
 
 const Plans = ({ name }: { name: string }) => {
 	return (

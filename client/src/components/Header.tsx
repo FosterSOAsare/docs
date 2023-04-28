@@ -4,7 +4,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 
 type headerType = { slideIn: () => void; headerData: any };
-const TypesHeader = ({ slideIn, headerData }: headerType) => {
+const Header = ({ slideIn, headerData }: headerType) => {
 	const [searchFocus, setSearchFocus] = useState(false);
 	return (
 		<div>
@@ -37,4 +37,4 @@ const TypesHeader = ({ slideIn, headerData }: headerType) => {
 	);
 };
 
-export default TypesHeader;
+export default Header;

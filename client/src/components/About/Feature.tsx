@@ -1,8 +1,8 @@
 import React from "react";
 
-import featuresType from "../types/feature.types";
+import featuresType from "../../types/feature.types";
 
-const HomepageFeature = ({ image, title, desc, imageOrder, mobile }: featuresType) => {
+const Feature = ({ image, title, desc, imageOrder, mobile }: featuresType) => {
 	return (
 		<article className="w-full h-auto flex flex-col mdl:flex-row items-center justify-between my-[10vh] mdl:my-[20vh] gap-12 px-6 sm:px-10">
 			<div className={`w-full mdl:w-[50%]  h-auto relative flex justify-center order-2 ${imageOrder == 2 ? "md:order-2" : "md:order-1"}`}>
@@ -17,4 +17,4 @@ const HomepageFeature = ({ image, title, desc, imageOrder, mobile }: featuresTyp
 	);
 };
 
-export default HomepageFeature;
+export default Feature;

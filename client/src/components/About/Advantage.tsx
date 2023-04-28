@@ -1,8 +1,8 @@
 import React from "react";
 
-import advantagesType from "../types/advantage.types";
+import advantagesType from "../../types/advantage.types";
 
-const HomepageAdvantage = ({ title, desc, image }: advantagesType) => {
+const Advantage = ({ title, desc, image }: advantagesType) => {
 	return (
 		<article className="sm:w-[33%] w-full ">
 			<img src={image} alt="" />
@@ -12,4 +12,4 @@ const HomepageAdvantage = ({ title, desc, image }: advantagesType) => {
 	);
 };
 
-export default HomepageAdvantage;
+export default Advantage;

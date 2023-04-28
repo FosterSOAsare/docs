@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 
-import { actionType } from "../../../types/side-menu.types";
+import { actionType } from "../../types/side-menu.types";
 
 type headerTypes = {
 	LogoIcon: string;

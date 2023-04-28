@@ -10,11 +10,11 @@ import SlidesAbout from "./pages/About/Slides";
 import FormsAbout from "./pages/About/Forms";
 import RegisterPage from "./pages/Register";
 import LoginPage from "./pages/Login";
-import DocsPage from "./pages/Docs/Docs";
+import DocsPage from "./pages/MainPages/Docs";
 import TypesLayout from "./components/Layouts/Types";
-import Sheets from "./pages/Sheets/Sheets";
-import Forms from "./pages/Forms/Forms";
-import Slides from "./pages/Slides/Slides";
+import Sheets from "./pages/MainPages/Sheets";
+import Forms from "./pages/MainPages/Forms";
+import Slides from "./pages/MainPages/Slides";
 
 function App() {
 	return (

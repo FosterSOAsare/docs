@@ -7,20 +7,20 @@ import templates from "../../data/Forms/templates.data";
 import toggleFunc, { slideIn, slideOut, initialState } from "../../utils/slider.util";
 
 import SideMenu from "../../components/SideMenu";
-import Hero from "./components/Hero";
-import Header from "./components/Header";
-import Plans from "./components/Plans";
-import Footer from "./components/Footer";
-import Security from "./components/Security";
-import Advantages from "./components/Advantages";
-import Features from "./components/Features";
+import Hero from "../../components/About/Hero";
+import Header from "../../components/About/Header";
+import Plans from "../../components/About/Plans";
+import Footer from "../../components/About/Footer";
+import Security from "../../components/About/Security";
+import Advantages from "../../components/About/Advantages";
+import Features from "../../components/About/Features";
 
 import LogoIcon from "@assets/sheets.svg";
 import HeroImage from "@assets/hero.png";
 
-import Collaborate from "./components/Collaborate";
-import GetStarted from "./components/GetStarted";
-import Templates from "./components/Templates";
+import Collaborate from "../../components/About/Collaborate";
+import GetStarted from "../../components/About/GetStarted";
+import Templates from "../../components/About/Templates";
 
 const FormsAbout = () => {
 	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
