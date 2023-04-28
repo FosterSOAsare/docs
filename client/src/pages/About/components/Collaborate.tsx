@@ -12,10 +12,10 @@ const Collaborate = ({ appStoreLink, playStoreLink, point }: { appStoreLink: str
 					Access, create, and edit your {point} wherever you are — from any mobile device, tablet, or computer — even when offline.
 				</p>
 				<div className="mt-6 w-full sm:h-24 h-auto  flex-col sm:flex-row flex justify-center gap-3 items-center">
-					<a href={playStoreLink} target="_blank" rel="noreferrer" className="w-[50%] sm:w-[20%]">
+					<a href={playStoreLink} target="_blank" rel="noreferrer" className="w-[50%] sm:w-[30%] lg:w-[15%]">
 						<img src={PlayStoreIcon} alt="" className="w-full" />
 					</a>
-					<a href={appStoreLink} target="_blank" rel="noreferrer" className="w-[50%] sm:w-[20%]">
+					<a href={appStoreLink} target="_blank" rel="noreferrer" className="w-[50%] sm:w-[30%] lg:w-[15%]">
 						<img src={AppStoreIcon} alt="" className="w-full" />
 					</a>
 				</div>

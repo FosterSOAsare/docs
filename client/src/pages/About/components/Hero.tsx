@@ -15,7 +15,7 @@ const Hero = ({ image, title, desc, name }: HeroTypes) => {
 			<div className="w-full h-full flex items-center justify-between flex-col lg:flex-row  border-border border-b-[1px]  max-w-screen-lg mx-auto pb-12 lg:pb-0 ">
 				<div className="lg:w-[60%] ">
 					<h1 className="text-4xl sm:text-[60px] w-full  sm:w-[90%]  mx-auto mb-4   sm:leading-[80px] text-center  lg:text-left">{title}</h1>
-					<p className="w-[90%] text-md mx-auto text-center lg:text-left sm:text-lg text-desc">{desc}</p>
+					<p className="w-[100%] sm:w-[90%] text-md mx-auto text-center lg:text-left sm:text-lg text-desc p-0">{desc}</p>
 					<div className="w-full flex justify-center lg:justify-start lg:pl-8 gap-4 my-12 flex-col sm:flex-row">
 						<a
 							className="w-3/5 sm:w-auto mx-auto sm:mx-0 h-14 text-lg font-medium bg-secondary flex justify-center items-center rounded-[6px] px-6 sm:px-4 text-white"

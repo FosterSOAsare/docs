@@ -1,5 +1,4 @@
 import Collaborate from "@assets/sheets-collaborate.jpg";
-import SeamlessMobile from "@assets/seamless-mobile.jpg";
 import Insights from "@assets/get-to-insights.jpg";
 import Connect from "@assets/connect-seamlessly.jpg";
 import ExtendCollaboration from "@assets/extend-collaboration.jpg";
@@ -12,7 +11,6 @@ const features: featuresType[] = [
 		title: "Collaborate on data, from anywhere",
 		desc: "Establish a ground truth for data in your online spreadsheet, with easy sharing and real-time editing. Use comments and assign action items to keep analysis flowing.",
 		imageOrder: 1,
-		mobile: SeamlessMobile
 	},
 	{
 		image: Insights,
