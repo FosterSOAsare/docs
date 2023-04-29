@@ -29,7 +29,7 @@ const loginLocalUser = asyncHandler(async (user) => {
 
 	// Generate JWT
 	await exists.generateJWT();
-	return exists;
+	return { user: { _id: exists._id, email: exists.email, image: exists.image }, token: exists.token };
 });
 
 module.exports = { createUser, checkUserExists, insertUser, loginLocalUser };

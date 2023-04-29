@@ -8,6 +8,7 @@ const authSchema = new mongoose.Schema({
 	password: { required: false, type: String },
 	provider: { required: true, type: String },
 	token: { required: false, type: String },
+	image: { required: false, type: String, default: "" },
 });
 authSchema.pre("save", async function (next) {
 	// only hash the password if it has been modified (or is new) or it exists at al

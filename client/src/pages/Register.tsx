@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import axiosInstance from "../lib/axios";
 type userData = {
 	email: String;
 	password: String;
@@ -18,6 +20,7 @@ const RegistrationPage = () => {
 		reset,
 		formState: { errors },
 	} = useForm({ resolver: zodResolver(registerSchema) });
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		let errArray = Array.from(Object.keys(errors));
@@ -26,12 +29,31 @@ const RegistrationPage = () => {
 			toast.error(message, { autoClose: 3000 });
 		}
 	}, [errors]);
-	function submit(data: any) {
-		if (data.confimpassword !== data.password) {
-			toast.error("Passwords do not match", { autoClose: 3000 });
-			return;
+	async function submit(data: any) {
+		try {
+			if (data.confirmpassword !== data.password) {
+				toast.error("Passwords do not match", { autoClose: 3000 });
+				return;
+			}
+
+			// Make request and redirect to login page
+			let response = await axiosInstance({
+				method: "POST",
+				url: "/auth/local",
+				data: { ...data, provider: "local" },
+			});
+			toast.success("Account successfully created", { autoClose: 1000 });
+			setTimeout(() => {
+				toast("Redirecting to login page...", { autoClose: 1000 });
+				setTimeout(() => {
+					navigate("/auth/login");
+				}, 1700);
+			}, 2000);
+
+			// Will Add Verification page
+		} catch (e: any) {
+			toast.warn(e?.response?.data?.error, { autoClose: 3000 });
 		}
-		console.log(data);
 	}
 
 	return (

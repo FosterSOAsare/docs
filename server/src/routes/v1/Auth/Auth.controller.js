@@ -35,6 +35,7 @@ const controllerLoginLocalUser = asyncHandler(async (req, res) => {
 
 	let response = await loginLocalUser(req.body);
 	if (response.error) {
+		res.status(404);
 		throw new Error(response.error);
 	}
 	res.status(200).json(response);
