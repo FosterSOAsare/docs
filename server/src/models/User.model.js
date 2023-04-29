@@ -1,16 +1,16 @@
 const asyncHandler = require("express-async-handler");
-const Auth = require("../schemas/Auth.schema");
+const User = require("../schemas/User.schema");
 
 const createUser = asyncHandler((data) => {
 	console.log(data);
 });
 
 const checkUserExists = asyncHandler(async (regex) => {
-	return await Auth.findOne(regex);
+	return await User.findOne(regex);
 });
 
 const insertUser = asyncHandler(async (user) => {
-	let newUser = new Auth(user);
+	let newUser = new User(user);
 	return await newUser.save();
 });
 
@@ -21,7 +21,7 @@ const loginLocalUser = asyncHandler(async (user) => {
 		return { error: "User credentials are invalid, please check credentials and try again" };
 	}
 	// Compare passwords
-	exists = new Auth(exists);
+	exists = new User(exists);
 	let psMatch = await exists.comparePassword(user.password);
 	if (!psMatch) {
 		return { error: "User credentials are invalid, please check credentials and try again" };
