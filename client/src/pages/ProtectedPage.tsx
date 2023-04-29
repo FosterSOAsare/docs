@@ -14,7 +14,7 @@ const ProtectedPage = ({ element }: { element: ReactNode }): any => {
 		<>
 			{user.loading && <Loading />}
 			{!user.loading && user.user.email && <>{element}</>}
-			{!user.loading && (user.error || !user.user.email) && <Navigate to={`${location.pathname}/about`}></Navigate>}
+			{!user.loading && (user.error || !user.user.email) && <Navigate to={`/auth/login`}></Navigate>}
 		</>
 	);
 };

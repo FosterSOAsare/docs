@@ -34,32 +34,34 @@ const userSlice = createSlice({
     },
     setLoading(state: userTypes, action: { payload: boolean }) {
       state.loading = action.payload
+    },
+    setError(state: userTypes, action: { payload: string | null }) {
+      state.error = action.payload
     }
   },
   extraReducers(builder) {
     builder.addCase(logInUser.fulfilled, (state, action) => {
-      // Set token
-      localStorage.setItem('docs:auth', action.payload.token)
-      return { loading: false, user: action.payload.user, error: null }
+      state.user = action.payload.user;
     }).addCase(logInUser.rejected, (state, action) => {
       if (action.error.message) {
-        return { ...initialState, error: action.error.message }
+        state.error = action.error.message
       }
-    }).addCase(logInUser.pending, () => {
-      return { ...initialState, loading: true, }
+    }).addCase(logInUser.pending, (state) => {
+      return { ...state, loading: true }
     });
     builder.addCase(fetchUser.fulfilled, (state, action) => {
-      return { loading: false, user: action.payload, error: null }
+      state.user = action.payload;
+      state.loading = false;
     }).addCase(fetchUser.rejected, (state, action) => {
       if (action.error.message) {
-        return { ...initialState, error: action.error.message }
+        state.error = action.error.message
       }
-    }).addCase(fetchUser.pending, () => {
-      return { ...initialState, loading: true, }
+    }).addCase(fetchUser.pending, (state) => {
+      state.loading = true
     });
   }
 })
 
 export const useUserSlice = (state: any) => state.user;
-export const { login, logout, setLoading } = userSlice.actions
+export const { login, logout, setLoading, setError } = userSlice.actions
 export default userSlice.reducer

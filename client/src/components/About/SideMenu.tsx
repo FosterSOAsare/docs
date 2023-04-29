@@ -3,6 +3,8 @@ import { NavLink, Link } from "react-router-dom";
 
 import moreTools from "../../data/side-menu.data";
 import { stateType } from "../../types/side-menu.types";
+import { useSelector } from "react-redux";
+import { useUserSlice } from "../../slices/user.slice";
 
 type mainPageType = {
 	name: string;
@@ -16,6 +18,7 @@ type SideMenuPropsType = {
 };
 
 const SideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
+	const user = useSelector(useUserSlice);
 	// Parent and child are used to be able to check the click's target and close the menu accordingly
 	const parentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
 	const grandParentRef = useRef<HTMLDivElement | null>(null) as React.MutableRefObject<HTMLDivElement>;
@@ -30,10 +33,6 @@ const SideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
 			}
 		}
 	}, []);
-
-	// useEffect(() => {
-	// 	slideOut();
-	// }, [location]);
 
 	return (
 		<aside className={`w-full h-[100vh] bg-[rgba(0,0,0,.4)] fixed z-30 top-0 left-0 ${toggle.show ? "block" : "hidden"}`} ref={grandParentRef}>
@@ -79,9 +78,11 @@ const SideMenu = ({ slideOut, toggle, headerData }: SideMenuPropsType) => {
 					<Link to={`/${headerData?.name.toLowerCase()}`} className="block w-full px-4 py-3 mb-2 rounded-[5px] border-border border-[1px] hover:border-secondary text-secondary text-center">
 						Go to {headerData?.name}
 					</Link>
-					<Link to="/auth/register" className="block w-full px-4 pt-3 rounded-[5px] text-secondary text-center">
-						Sign Up
-					</Link>
+					{!user.user.email && (
+						<Link to="/auth/register" className="block w-full px-4 pt-3 rounded-[5px] text-secondary text-center">
+							Sign Up
+						</Link>
+					)}
 				</div>
 			</article>
 		</aside>

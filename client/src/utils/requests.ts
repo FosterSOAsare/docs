@@ -7,7 +7,6 @@ export const httpLoginUser = async (data: { email: string, password: string }) =
       url: "/auth/local/login",
       data: { ...data, provider: "local" },
     });
-    console.log(response)
     return response.data
   } catch (e: any) {
     const error = createRequestErrorMessage(e)

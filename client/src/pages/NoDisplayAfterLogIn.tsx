@@ -13,7 +13,7 @@ const NoDisplayAfterLogin = ({ element }: { element: ReactNode }): any => {
 
 	return (
 		<>
-			{!user.loading && !user.user.email && !user.user._id && <>{element}</>}
+			{user.error && <>{element}</>}
 			{!user.loading && user.user.email && user.user._id && <Navigate to="/"></Navigate>}
 		</>
 	);
