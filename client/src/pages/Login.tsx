@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logInUser, userTypes, useUserSlice } from "../slices/user.slice";
-
+import { unwrapResult } from "@reduxjs/toolkit";
 import { loginSchema } from "../lib/react-hook-forms";
 
 const LoginPage = () => {
@@ -31,18 +31,15 @@ const LoginPage = () => {
 	async function submit(data: any) {
 		let fn: any = logInUser(data);
 		dispatch(fn)
+			.then(unwrapResult)
 			.then((data: any) => {
-				if (data.error) {
-					toast.error(data.error.message, { autoClose: 2500 });
-					return;
-				}
 				toast.success("Login successful", { autoClose: 2500 });
 				setTimeout(() => {
 					navigate("/");
 				}, 3000);
 			})
 			.catch((e: Error) => {
-				toast.error(user.error, { autoClose: 1500 });
+				toast.error(e.message, { autoClose: 1500 });
 			});
 	}
 
