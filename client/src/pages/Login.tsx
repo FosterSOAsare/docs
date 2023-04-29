@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-type userData = {
-	email: String;
-	password: String;
-};
-
+import { useDispatch, useSelector } from "react-redux";
+import { logInUser, userTypes, useUserSlice } from "../slices/user.slice";
+import { unwrapResult } from "@reduxjs/toolkit";
 import { loginSchema } from "../lib/react-hook-forms";
 
 const LoginPage = () => {
+	const user: userTypes = useSelector(useUserSlice);
+	const navigate = useNavigate();
+
+	const dispatch = useDispatch();
 	const {
 		register,
 		handleSubmit,
@@ -26,8 +28,19 @@ const LoginPage = () => {
 			toast.error(message, { autoClose: 3000 });
 		}
 	}, [errors]);
-	function submit(data: any) {
-		console.log(data);
+	async function submit(data: any) {
+		let fn: any = logInUser(data);
+		dispatch(fn)
+			.then(unwrapResult)
+			.then((data: any) => {
+				toast.success("Login successful", { autoClose: 2500 });
+				setTimeout(() => {
+					navigate("/");
+				}, 3000);
+			})
+			.catch((e: Error) => {
+				toast.error(e.message, { autoClose: 1500 });
+			});
 	}
 
 	return (
@@ -62,9 +75,13 @@ const LoginPage = () => {
 						/>
 					</div>
 
-					<button onClick={handleSubmit(submit)} className="w-[70%] h-10 bg-green-700 text-white rounded-[5px] mb-4">
-						Login
+					<button
+						onClick={handleSubmit(submit)}
+						className={`w-[70%] h-10 ${user.loading ? "bg-slate-200 text-black" : "bg-green-700 text-white"}  rounded-[5px] mb-4`}
+						disabled={user.loading}>
+						{!user.loading ? "Login" : "Waiting..."}
 					</button>
+
 					<div>OR</div>
 					<button className="w-[70%] h-10 bg-black text-white rounded-[5px] mt-4">Login With Google</button>
 					<p className="text-xs mt-2 font-medium">
