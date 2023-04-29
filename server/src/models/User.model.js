@@ -1,12 +1,12 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../schemas/User.schema");
 
-const createUser = asyncHandler((data) => {
-	console.log(data);
-});
-
 const checkUserExists = asyncHandler(async (regex) => {
 	return await User.findOne(regex);
+});
+
+const fetchUser = asyncHandler(async (regex) => {
+	return await User.findOne(regex, { password: 0, provider: 0, __v: 0 });
 });
 
 const insertUser = asyncHandler(async (user) => {
@@ -32,4 +32,4 @@ const loginLocalUser = asyncHandler(async (user) => {
 	return { user: { _id: exists._id, email: exists.email, image: exists.image }, token: exists.token };
 });
 
-module.exports = { createUser, checkUserExists, insertUser, loginLocalUser };
+module.exports = { checkUserExists, insertUser, loginLocalUser, fetchUser };

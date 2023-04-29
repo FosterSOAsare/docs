@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../lib/axios";
 import createRequestErrorMessage from "../utils/createErrorMessage";
+import { httpLoginUser, httpFetchUser } from "../utils/requests";
 export type userTypes = {
   loading: boolean,
   error: null | string,
@@ -16,19 +17,8 @@ const initialState: userTypes = {
   loading: false, error: null, user: { email: '', image: '', _id: '' }
 }
 
-export const logInUser = createAsyncThunk<any, { email: string, password: string }>('user/login', async (data: any, { rejectWithValue }) => {
-  try {
-    let response = await axiosInstance({
-      method: "POST",
-      url: "/auth/local/login",
-      data: { ...data, provider: "local" },
-    });
-    return response.data
-  } catch (e: any) {
-    const error = createRequestErrorMessage(e)
-    throw new Error(error)
-  }
-})
+export const logInUser = createAsyncThunk('user/login', (data: { email: string, password: string }) => httpLoginUser(data))
+export const fetchUser = createAsyncThunk('user/fetch', httpFetchUser)
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -42,6 +32,9 @@ const userSlice = createSlice({
     setImage(state: userTypes) {
 
     },
+    setLoading(state: userTypes, action: { payload: boolean }) {
+      state.loading = action.payload
+    }
   },
   extraReducers(builder) {
     builder.addCase(logInUser.fulfilled, (state, action) => {
@@ -53,12 +46,20 @@ const userSlice = createSlice({
         return { ...initialState, error: action.error.message }
       }
     }).addCase(logInUser.pending, () => {
-
       return { ...initialState, loading: true, }
-    })
+    });
+    builder.addCase(fetchUser.fulfilled, (state, action) => {
+      return { loading: false, user: action.payload, error: null }
+    }).addCase(fetchUser.rejected, (state, action) => {
+      if (action.error.message) {
+        return { ...initialState, error: action.error.message }
+      }
+    }).addCase(fetchUser.pending, () => {
+      return { ...initialState, loading: true, }
+    });
   }
 })
 
 export const useUserSlice = (state: any) => state.user;
-export const { login, logout } = userSlice.actions
+export const { login, logout, setLoading } = userSlice.actions
 export default userSlice.reducer

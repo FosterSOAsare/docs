@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const { createUser, checkUserExists, insertUser, loginLocalUser } = require("../../../models/Auth.model");
+const { createUser, checkUserExists, insertUser, loginLocalUser } = require("../../../models/User.model");
 
 const controllerCreateUser = asyncHandler(async (data) => {
 	// Check if user already exists

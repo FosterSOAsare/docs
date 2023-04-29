@@ -7,13 +7,15 @@ const user = asyncHandler(async (req, res, next) => {
 		return;
 	}
 	let token = req?.headers.authorization.split(" ")[1];
+
 	// Compare auth
 	let valid = await jwt.verify(token, process.env.JWT_SECRET);
+
 	if (!valid._id || !valid.email) {
 		res.status(400);
 		throw new Error("User not authorized");
 	}
-	req.payload = valid;
+	req.user = valid;
 	next();
 });
 
