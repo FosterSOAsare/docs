@@ -30,21 +30,22 @@ const LoginPage = () => {
 	}, [errors]);
 	async function submit(data: any) {
 		let fn: any = logInUser(data);
-		await dispatch(fn);
+		dispatch(fn)
+			.then((data: any) => {
+				if (data.error) {
+					toast.error(data.error.message, { autoClose: 2500 });
+					return;
+				}
+				toast.success("Login successful", { autoClose: 2500 });
+				setTimeout(() => {
+					navigate("/");
+				}, 3000);
+			})
+			.catch((e: Error) => {
+				toast.error(user.error, { autoClose: 1500 });
+			});
 	}
 
-	useEffect(() => {
-		if (user.error) {
-			toast.error(user.error, { autoClose: 3000 });
-		}
-
-		if (user.user.email && user.user._id) {
-			toast.success("Login successful", { autoClose: 3000 });
-			setTimeout(() => {
-				navigate("/");
-			}, 3000);
-		}
-	}, [user]);
 	return (
 		<>
 			<ToastContainer />

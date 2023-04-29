@@ -16,9 +16,8 @@ const initialState: userTypes = {
   loading: false, error: null, user: { email: '', image: '', _id: '' }
 }
 
-export const logInUser = createAsyncThunk<any, { email: string, password: string }>('user/login', async (data: any) => {
+export const logInUser = createAsyncThunk<any, { email: string, password: string }>('user/login', async (data: any, { rejectWithValue }) => {
   try {
-
     let response = await axiosInstance({
       method: "POST",
       url: "/auth/local/login",
@@ -26,8 +25,8 @@ export const logInUser = createAsyncThunk<any, { email: string, password: string
     });
     return response.data
   } catch (e: any) {
-
-    throw new Error(createRequestErrorMessage(e))
+    const error = createRequestErrorMessage(e)
+    throw new Error(error)
   }
 })
 const userSlice = createSlice({
@@ -54,6 +53,7 @@ const userSlice = createSlice({
         return { ...initialState, error: action.error.message }
       }
     }).addCase(logInUser.pending, () => {
+
       return { ...initialState, loading: true, }
     })
   }
