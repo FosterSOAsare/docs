@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetchUser, setLoading } from "./slices/user.slice";
+import { fetchUser, setLoading, setError } from "./slices/user.slice";
 
 import "./App.css";
 import "@styles/output.css";
@@ -27,6 +27,7 @@ function App() {
 			dispatch(fetchUser());
 			return;
 		}
+		dispatch(setError("User not found"));
 		dispatch(setLoading(false));
 	}, []);
 	return (

@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import { logInUser, userTypes, useUserSlice } from "../slices/user.slice";
+import { logInUser, userTypes, useUserSlice, setLoading, setError } from "../slices/user.slice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { loginSchema } from "../lib/react-hook-forms";
 
@@ -33,12 +33,21 @@ const LoginPage = () => {
 		dispatch(fn)
 			.then(unwrapResult)
 			.then((data: any) => {
+				// All these further steps are been made simply because I want to display the toast before any redirects are done
+				// Have added the code to use if I don't need the toast in the reducer
+				// Set token
+				localStorage.setItem("docs:auth", data.token);
 				toast.success("Login successful", { autoClose: 2500 });
 				setTimeout(() => {
+					dispatch(setLoading(false));
+					dispatch(setError(null));
 					navigate("/");
 				}, 3000);
+
+				// 	navigate("/");
 			})
 			.catch((e: Error) => {
+				dispatch(setLoading(false));
 				toast.error(e.message, { autoClose: 1500 });
 			});
 	}

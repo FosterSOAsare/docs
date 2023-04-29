@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
+import { useUserSlice } from "../../slices/user.slice";
 
 type HeroTypes = {
 	title: string;
@@ -10,6 +12,7 @@ type HeroTypes = {
 };
 
 const Hero = ({ image, title, desc, name }: HeroTypes) => {
+	const user = useSelector(useUserSlice);
 	return (
 		<section className="w-full lg:h-[100vh] h-auto pt-[12vh] lg:pt-[9vh] px-6 sm:px-8 lg:px-0 lg:pb-0" id="hero">
 			<div className="w-full h-full flex items-center justify-between flex-col lg:flex-row  border-border border-b-[1px]  max-w-screen-lg mx-auto pb-12 lg:pb-0 ">
@@ -28,12 +31,14 @@ const Hero = ({ image, title, desc, name }: HeroTypes) => {
 							Go to {name}
 						</Link>
 					</div>
-					<p className="mx-auto lg:text-left lg:px-8 text-center text-lg text-desc">
-						Don't have an account?
-						<Link to="/auth/register" className="text-secondary ml-6 font-medium sm:inline block mt-4 sm:mt-0">
-							Sign up for free
-						</Link>
-					</p>
+					{!user.user.email && (
+						<p className="mx-auto lg:text-left lg:px-8 text-center text-lg text-desc">
+							Don't have an account?
+							<Link to="/auth/register" className="text-secondary ml-6 font-medium sm:inline block mt-4 sm:mt-0">
+								Sign up for free
+							</Link>
+						</p>
+					)}
 				</div>
 				<div className="w-full sm:w-[90%] md:w-[70%]  h-[300px] sm:h-[450px] md:h-[550px] lg:w-[50%] lg:h-[400px]  relative overflow-hidden md:mt-0 mt-[20px]">
 					<img src={image} alt="" className="w-full h-full" />
