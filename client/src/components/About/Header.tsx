@@ -1,7 +1,10 @@
 import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
+import Avatar from "../Avatar";
 
 import { actionType } from "../../types/side-menu.types";
+import { useSelector } from "react-redux";
+import { useUserSlice } from "../../slices/user.slice";
 
 type headerTypes = {
 	LogoIcon: string;
@@ -11,6 +14,7 @@ type headerTypes = {
 };
 
 const Header = ({ LogoIcon, slideIn, toggleDispatchFunc, name }: headerTypes) => {
+	const user = useSelector(useUserSlice);
 	return (
 		<header className="w-full h-16  flex justify-between items-center px-3 md:px-8 border-b-2 border-border fixed bg-white z-10">
 			<div className="flex items-center gap-3 ">
@@ -22,6 +26,7 @@ const Header = ({ LogoIcon, slideIn, toggleDispatchFunc, name }: headerTypes) =>
 					<p className="font-medium">Google {name}</p>
 				</a>
 			</div>
+			{user.user && <Avatar image={user.user.image} email={user.user.email} />}
 		</header>
 	);
 };
