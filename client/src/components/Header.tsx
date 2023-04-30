@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 
 import { AiOutlineSearch } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { useUserSlice } from "../slices/user.slice";
+
+import Avatar from "./Avatar";
 
 type headerType = { slideIn: () => void; headerData: any };
 const Header = ({ slideIn, headerData }: headerType) => {
+	const user = useSelector(useUserSlice);
+
 	const [searchFocus, setSearchFocus] = useState(false);
 	return (
 		<div>
@@ -31,7 +37,7 @@ const Header = ({ slideIn, headerData }: headerType) => {
 					/>
 				</div>
 
-				<div className="profile w-10 rounded-full h-10 bg-red-400 hover:shadow-custom"></div>
+				{user.user && <Avatar image={user.user.image} email={user.user.email} />}
 			</header>
 		</div>
 	);

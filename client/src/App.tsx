@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchUser, setLoading, setError } from "./slices/user.slice";
 
 import "./App.css";
 import "@styles/output.css";
@@ -14,8 +16,20 @@ import DocsPage from "./pages/MainPages/Docs";
 import Sheets from "./pages/MainPages/Sheets";
 import Forms from "./pages/MainPages/Forms";
 import Slides from "./pages/MainPages/Slides";
+import ProtectedPage from "./pages/ProtectedPage";
+import NoDisplayAfterLogin from "./pages/NoDisplayAfterLogIn";
 
 function App() {
+	const dispatch = useDispatch<any>();
+	useEffect(() => {
+		let auth = localStorage.getItem("docs:auth");
+		if (auth) {
+			dispatch(fetchUser());
+			return;
+		}
+		dispatch(setError("User not found"));
+		dispatch(setLoading(false));
+	}, []);
 	return (
 		<div className="App">
 			<Routes>
@@ -27,14 +41,14 @@ function App() {
 					<Route path="/slides/about" element={<SlidesAbout />}></Route>
 				</Route>
 				<Route>
-					<Route path="/docs" element={<DocsPage />}></Route>
-					<Route path="/sheets" element={<Sheets />}></Route>
-					<Route path="/forms" element={<Forms />}></Route>
-					<Route path="/slides" element={<Slides />}></Route>
+					<Route path="/docs" element={<ProtectedPage element={<DocsPage />} />}></Route>
+					<Route path="/sheets" element={<ProtectedPage element={<Sheets />} />}></Route>
+					<Route path="/forms" element={<ProtectedPage element={<Forms />} />}></Route>
+					<Route path="/slides" element={<ProtectedPage element={<Slides />} />}></Route>
 				</Route>
 				<Route path="/auth">
-					<Route path="register" element={<RegisterPage />}></Route>
-					<Route path="login" element={<LoginPage />}></Route>
+					<Route path="register" element={<NoDisplayAfterLogin element={<RegisterPage />} />}></Route>
+					<Route path="login" element={<NoDisplayAfterLogin element={<LoginPage />} />}></Route>
 				</Route>
 			</Routes>
 		</div>
