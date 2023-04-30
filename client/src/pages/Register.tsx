@@ -113,7 +113,9 @@ const RegistrationPage = () => {
 						</button>
 					}
 					<div>OR</div>
-					<button className="w-[70%] h-10 bg-black text-white rounded-[5px] mt-4">Sign Up With Google</button>
+					<a href={`${process.env.REACT_APP_API_BASE_URL}/auth/google`} className="w-[70%] h-10 bg-black text-white rounded-[5px] mt-4 flex items-center justify-center">
+						Sign Up With Google
+					</a>
 					<p className="text-xs mt-2 font-medium">
 						Already have an account ,{" "}
 						<Link to="/auth/login" className="text-blue-400 underline">

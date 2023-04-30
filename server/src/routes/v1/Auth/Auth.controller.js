@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const { createUser, checkUserExists, insertUser, loginLocalUser } = require("../../../models/User.model");
+const { checkUserExists, insertUser, loginLocalUser, googleAuth, fetchUser } = require("../../../models/User.model");
 
 const controllerCreateUser = asyncHandler(async (data) => {
 	// Check if user already exists
@@ -40,5 +40,26 @@ const controllerLoginLocalUser = asyncHandler(async (req, res) => {
 	}
 	res.status(200).json(response);
 });
+const controllerAuthGoogle = asyncHandler(async (req, res) => {
+	if (!req.isAuthenticated()) {
+		res.status(401).json({ success: false, message: "Authentication failed" });
+		return;
+	}
+	// Auth user
+	let response = await googleAuth(req.user);
+	if (response.error) {
+		res.redirect(`${process.env.CLIENT_URL}/auth/login?error=${response.error}`);
+	}
 
-module.exports = { controllerCreateLocalUser, controllerLoginLocalUser };
+	res.redirect(`${process.env.CLIENT_URL}/auth/login?action=confirmdetails&token=${response.token}`);
+});
+const verifyGoogleAuth = asyncHandler(async (req, res) => {
+	let user = await fetchUser({ email: req.user.email, _id: req.user._id });
+	if (!user) {
+		res.status(400);
+		throw new Error("User not found");
+	}
+	//
+	res.status(200).json(user);
+});
+module.exports = { controllerCreateLocalUser, controllerLoginLocalUser, controllerAuthGoogle, verifyGoogleAuth };

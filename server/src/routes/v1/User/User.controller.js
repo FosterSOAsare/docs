@@ -11,7 +11,6 @@ const controllerGetUser = asyncHandler(async (req, res) => {
 	res.status(200).json(user);
 });
 const controllerUpdateUser = asyncHandler(async (req, res) => {
-	console.log(req.user);
 	// To be done
 	res.status(200).json({ status: "ok" });
 });

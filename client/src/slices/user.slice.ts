@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../lib/axios";
 import createRequestErrorMessage from "../utils/createErrorMessage";
-import { httpLoginUser, httpFetchUser } from "../utils/requests";
+import { httpLoginUser, httpFetchUser, httpVerifyGoogleOauth } from "../utils/requests";
 export type userTypes = {
   loading: boolean,
   error: null | string,
@@ -19,6 +19,9 @@ const initialState: userTypes = {
 
 export const logInUser = createAsyncThunk('user/login', (data: { email: string, password: string }) => httpLoginUser(data))
 export const fetchUser = createAsyncThunk('user/fetch', httpFetchUser)
+export const verifyGoogleOauth = createAsyncThunk('verify/token', (token: string) => httpVerifyGoogleOauth(token))
+
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -59,9 +62,19 @@ const userSlice = createSlice({
     }).addCase(fetchUser.pending, (state) => {
       state.loading = true
     });
+    builder.addCase(verifyGoogleOauth.fulfilled, (state, action) => {
+      state.user = action.payload;
+    }).addCase(verifyGoogleOauth.rejected, (state, action) => {
+      if (action.error.message) {
+        state.error = action.error.message
+      }
+    }).addCase(verifyGoogleOauth.pending, (state) => {
+      state.loading = true
+    });
+
   }
 })
 
 export const useUserSlice = (state: any) => state.user;
-export const { login, logout, setLoading, setError } = userSlice.actions
+export const { login, logout, setLoading, setError, } = userSlice.actions
 export default userSlice.reducer
