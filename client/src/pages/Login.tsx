@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import { logInUser, userTypes, useUserSlice, setLoading, setError } from "../slices/user.slice";
+import { logInUser, verifyGoogleOauth, userTypes, useUserSlice, setLoading, setError } from "../slices/user.slice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { loginSchema } from "../lib/react-hook-forms";
 
 const LoginPage = () => {
 	const user: userTypes = useSelector(useUserSlice);
 	const navigate = useNavigate();
+	const location = useLocation();
+	const query = new URLSearchParams(location.search);
+	const token = query.get("token");
+	const oauthError = query.get("error");
 
 	const dispatch = useDispatch();
 	const {
@@ -52,6 +56,33 @@ const LoginPage = () => {
 			});
 	}
 
+	// Verification of Google Oauth
+	useEffect(() => {
+		if (token) {
+			let fn: any = verifyGoogleOauth(token);
+			dispatch(fn)
+				.then(unwrapResult)
+				.then((data: any) => {
+					toast.success("Google Oauth Successful", { autoClose: 1500 });
+					localStorage.setItem("docs:auth", token);
+					setTimeout(() => {
+						dispatch(setError(null));
+						dispatch(setLoading(false));
+					}, 2000);
+				})
+				.catch((e: Error) => {
+					dispatch(setLoading(false));
+					toast.error(e.message, { autoClose: 1500 });
+				});
+		}
+	}, [token]);
+
+	// Google Oauth Login Failed
+	useEffect(() => {
+		if (oauthError) {
+			toast.error(oauthError, { autoClose: 3000 });
+		}
+	}, [oauthError]);
 	return (
 		<>
 			<ToastContainer />
@@ -92,7 +123,9 @@ const LoginPage = () => {
 					</button>
 
 					<div>OR</div>
-					<button className="w-[70%] h-10 bg-black text-white rounded-[5px] mt-4">Login With Google</button>
+					<a href={`${process.env.REACT_APP_API_BASE_URL}/auth/google`} className="w-[70%] h-10 bg-black text-white rounded-[5px] mt-4 flex items-center justify-center">
+						Login With Google
+					</a>
 					<p className="text-xs mt-2 font-medium">
 						Don't have an account ,{" "}
 						<Link to="/auth/register" className="text-blue-400 underline">

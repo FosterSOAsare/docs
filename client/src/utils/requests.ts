@@ -19,9 +19,25 @@ export const httpFetchUser = async () => {
       method: "GET",
       url: "/user",
     });
-    return response.data
+    return response?.data
   } catch (e: any) {
     const error = createRequestErrorMessage(e)
     throw new Error(error)
   }
 }
+export const httpVerifyGoogleOauth = async (token: string) => {
+
+  try {
+    let response = await axiosInstance({
+      method: "GET",
+      url: "/auth/google/verify",
+      headers: { authorization: `Bearer ${token}` }
+    });
+    return response?.data
+  } catch (e: any) {
+    console.log(e)
+    const error = createRequestErrorMessage(e)
+    throw new Error(error)
+  }
+}
+

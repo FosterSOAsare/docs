@@ -48,8 +48,7 @@ const controllerAuthGoogle = asyncHandler(async (req, res) => {
 	// Auth user
 	let response = await googleAuth(req.user);
 	if (response.error) {
-		res.status(401);
-		throw new Error(response.error);
+		res.redirect(`${process.env.CLIENT_URL}/auth/login?error=${response.error}`);
 	}
 
 	res.redirect(`${process.env.CLIENT_URL}/auth/login?action=confirmdetails&token=${response.token}`);
