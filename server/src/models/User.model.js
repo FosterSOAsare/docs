@@ -32,4 +32,21 @@ const loginLocalUser = asyncHandler(async (user) => {
 	return { user: { _id: exists._id, email: exists.email, image: exists.image }, token: exists.token };
 });
 
-module.exports = { checkUserExists, insertUser, loginLocalUser, fetchUser };
+const googleAuth = asyncHandler(async (user) => {
+	let exists = await checkUserExists({ email: user.email });
+
+	if (!exists) {
+		exists = new User(user);
+		await exists.save();
+	}
+	// Check provider
+	if (exists?.provider !== user.provider) {
+		// User is registered with email  and password
+		return { error: "User is registered with email and password instead" };
+	}
+
+	await exists.generateJWT();
+	return { token: exists.token };
+});
+
+module.exports = { checkUserExists, insertUser, loginLocalUser, fetchUser, googleAuth };
