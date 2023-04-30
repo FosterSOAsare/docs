@@ -27,7 +27,7 @@ const OwnerPopUp = ({ ownerFilter, setOwnerFilter }: ownerPopUpTypes) => {
 					<p> Owned by me</p>
 				</li>
 				<li className="text-[14px] flex justify-start items-center gap-2 hover:bg-hover py-2 px-4" onClick={() => ownerFilterFunc("notme")}>
-					<div className="w-[20px] h-[80%]  flex items-center justify-cente ">{ownerFilter.filter === "notme" && <FaCheck className="text-md" />}</div>
+					<div className="w-[20px] h-[80%]  flex items-center justify-center ">{ownerFilter.filter === "notme" && <FaCheck className="text-md" />}</div>
 					<p> Not owned by me</p>
 				</li>
 			</ul>

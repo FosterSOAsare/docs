@@ -1,7 +1,9 @@
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import DocImage from "@assets/doc.png";
+import closePopup from "../utils/close_popup";
+
 import SharedImage from "@assets/shared.png";
+import ActionsPopup from "./ActionsPopup";
 
 type contentCardType = {
 	layout: string;
@@ -9,8 +11,16 @@ type contentCardType = {
 	mainPageTypeImage: string;
 };
 const ContentCard = ({ layout, shared, mainPageTypeImage }: contentCardType) => {
+	const [showPopup, setShowPopup] = useState(false);
+	const ActionRef = useRef<any>();
+	const [offline, setOffline] = useState(false);
+	useEffect(() => {
+		closePopup(ActionRef, () => {
+			setShowPopup(false);
+		});
+	}, [closePopup]);
 	return (
-		<div className="w-full border-[1px] h-[300px] rounded-[5px] overflow-hidden">
+		<div className="w-full border-[1px] h-[300px] rounded-[5px]  hover:cursor-pointer">
 			<div className="image w-full h-[220px] flex items-center justify-center">
 				<p className="opacity-60 text-sm">Thumbnail Here</p>
 			</div>
@@ -29,8 +39,11 @@ const ContentCard = ({ layout, shared, mainPageTypeImage }: contentCardType) => 
 
 						<p className="opacity-60 text-[12px]">Opened Jun 11,2020 </p>
 					</div>
-					<div className="w-[30px] h-[30px] hover:bg-search rounded-full flex items-center justify-center">
-						<BsThreeDotsVertical />
+					<div className="relative" ref={ActionRef}>
+						<div className="w-[30px] h-[30px] hover:bg-search rounded-full flex items-center justify-center" onClick={() => setShowPopup(true)}>
+							<BsThreeDotsVertical />
+						</div>
+						{showPopup && <ActionsPopup setShowPopup={setShowPopup} offline={offline} setOffline={setOffline} />}
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 function closePopup(popupParentRef: any, close: () => void) {
   let parent = popupParentRef.current
   document.addEventListener('click', (e: Event) => {
