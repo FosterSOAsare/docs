@@ -24,7 +24,7 @@ const Header = ({ slideIn, headerData }: headerType) => {
 						<p className="font-medium">{headerData?.name}</p>
 					</a>
 				</div>
-				<div className={`group w-[50%] h-[70%] rounded-[10px] ${searchFocus ? " shadow-custom" : "bg-search"} flex items-center justify-start px-4 gap-4`}>
+				<div className={`group w-[50%] h-[70%] rounded-[10px] ${searchFocus ? "shadow-custom" : "bg-search"} flex items-center justify-start px-4 gap-4`}>
 					<div className="w-8 h-8 hover:bg-hover rounded-full flex items-center justify-center">
 						<AiOutlineSearch />
 					</div>
@@ -37,7 +37,7 @@ const Header = ({ slideIn, headerData }: headerType) => {
 					/>
 				</div>
 
-				{user.user && <Avatar image={user.user.image} email={user.user.email} />}
+				{user.user.email && <Avatar image={user.user.image} email={user.user.email} />}
 			</header>
 		</div>
 	);

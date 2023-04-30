@@ -26,7 +26,7 @@ const Header = ({ LogoIcon, slideIn, toggleDispatchFunc, name }: headerTypes) =>
 					<p className="font-medium">Google {name}</p>
 				</a>
 			</div>
-			{user.user && <Avatar image={user.user.image} email={user.user.email} />}
+			{user.user.email && <Avatar image={user.user.image} email={user.user.email} />}
 		</header>
 	);
 };
