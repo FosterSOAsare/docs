@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import closePopup from "../utils/close_popup";
 
-import SharedImage from "@assets/shared.png";
 import ActionsPopup from "./ActionsPopup";
+
+import { TbUsers } from "react-icons/tb";
 
 type contentCardType = {
 	layout: string;
@@ -41,11 +42,7 @@ const ContentCard = ({ layout, shared, mainPageTypeImage, index }: contentCardTy
 								<div>
 									<img src={mainPageTypeImage} alt="" />
 								</div>
-								{shared && (
-									<div>
-										<img src={SharedImage} alt="" />
-									</div>
-								)}
+								{shared && <TbUsers className="text-lg tracking-[10px]" />}
 
 								<p className="opacity-60 text-[12px]">Opened Jun 11,2020 </p>
 							</div>
@@ -67,13 +64,9 @@ const ContentCard = ({ layout, shared, mainPageTypeImage, index }: contentCardTy
 
 					<div className="w-full  px-2 h-[50px] border-b-[1px] flex items-center justify-between py-[2px] list__desc">
 						<div className="w-1/2  flex items-center justify-start" id="doc__name">
-							<div className="flex gap-[5px] items-center justify-start">
+							<div className="flex gap-[10px] items-center justify-start">
 								<h3>Resume</h3>
-								{shared && (
-									<div>
-										<img src={SharedImage} alt="" />
-									</div>
-								)}
+								{shared && <TbUsers className="text-lg opacity-80" />}
 							</div>
 						</div>
 						<div className="w-1/2 flex items-center justify-between">
