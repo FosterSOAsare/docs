@@ -9,10 +9,11 @@ type ownerPopUpTypes = {
 	setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
 	setOffline: React.Dispatch<React.SetStateAction<boolean>>;
 	offline: boolean;
+	position: string;
 };
-const ActionsPopup = ({ setShowPopup, offline, setOffline }: ownerPopUpTypes) => {
+const ActionsPopup = ({ setShowPopup, offline, setOffline, position }: ownerPopUpTypes) => {
 	return (
-		<div className={`w-[230px] h-auto bg-white absolute top-[120%]  -left-[100px] z-[4]  rounded-[5px] shadow-custom py-2`}>
+		<div className={`w-[230px] h-auto bg-white absolute ${position === "top" ? "-top-[180px]" : "top-[120%]"}  -left-[100px] z-[4]  rounded-[5px] shadow-custom py-2`}>
 			<ul className="list-none">
 				<li className="text-[14px] mb-[3px] flex justify-start items-center gap-2 hover:bg-hover py-2 px-4" onClick={() => setShowPopup(false)}>
 					<div className="w-[20px] h-[80%]  flex items-center justify-center ">
