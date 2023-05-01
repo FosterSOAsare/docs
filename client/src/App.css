@@ -21,3 +21,7 @@ html {
 nav .active {
 	color: green;
 }
+
+.list:hover .list__desc {
+	border: transparent;
+}

@@ -46,7 +46,7 @@ const MainPageContent = ({ name, mainPageTypeImage }: any) => {
 			<div className="doc__controls  sticky top-[64px] z-[3] bg-white py-4 ">
 				<div className="flex justify-between items-center w-full max-w-[960px] mx-auto">
 					<p className="font-medium">Recent {name}</p>
-					<div className="flex justify-between items-center w-2/5">
+					<div className={`flex justify-between items-center ${view === "grid" ? "w-2/5" : "w-1/2"}`}>
 						<div className="relative" ref={ownerRef}>
 							<div className="flex gap-2 p-2 hover:cursor-pointer hover:bg-search rounded-[5px]  justify-start items-center h-full w-full" onClick={displayOwnerFilterPopUp}>
 								<p className="text-[14px]">{ownerFilter.filter === "anyone" ? "Owned by anyone" : ownerFilter.filter === "me" ? "Owned by me" : "Not owned by me"}</p>
@@ -54,6 +54,18 @@ const MainPageContent = ({ name, mainPageTypeImage }: any) => {
 							</div>
 							{ownerFilter.display === "block" && <OwnerPopUp ownerFilter={ownerFilter} setOwnerFilter={setOwnerFilter} />}
 						</div>
+						{/* Setting sort text in list view */}
+						{view === "list" && (
+							<div>
+								{sortFilter.filter === "opened"
+									? "Last opened by anyone"
+									: sortFilter.filter === "modified"
+									? "Last modified by me"
+									: sortFilter.filter === "all-modified"
+									? "Last modified"
+									: "Title"}
+							</div>
+						)}
 						<div className="controls w-auto gap-2 flex items-center justify-between">
 							<div
 								onClick={() => {
@@ -77,9 +89,9 @@ const MainPageContent = ({ name, mainPageTypeImage }: any) => {
 					</div>
 				</div>
 			</div>
-			<div className="h-auto  w-full max-w-[960px] mx-auto grid grid-cols-4 gap-8 pt-[20px]">
+			<div className={`h-auto  w-full max-w-[960px] mx-auto  ${view === "grid" ? "grid" : "block"} grid-cols-4 gap-8 pt-[20px]`}>
 				{[1, 2, 3, 4, 5, 6, 7, 8].map((e, index) => (
-					<ContentCard key={index} layout="grid" shared={(index + 1) % 2 === 0} mainPageTypeImage={mainPageTypeImage} />
+					<ContentCard key={index} layout={view} shared={(index + 1) % 2 === 0} mainPageTypeImage={mainPageTypeImage} index={index} />
 				))}
 			</div>
 		</main>
