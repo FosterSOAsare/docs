@@ -4,14 +4,15 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useUserSlice } from "../slices/user.slice";
+import closePopup from "../utils/close_popup";
 
 import Avatar from "./Avatar";
 
 type headerType = { slideIn: () => void; headerData: any };
 const Header = ({ slideIn, headerData }: headerType) => {
 	const user = useSelector(useUserSlice);
-
 	const [searchFocus, setSearchFocus] = useState(false);
+
 	return (
 		<div>
 			<header className="w-full h-16  flex justify-between items-center px-3 md:px-8   fixed bg-white z-10">
@@ -24,6 +25,7 @@ const Header = ({ slideIn, headerData }: headerType) => {
 						<p className="font-medium">{headerData?.name}</p>
 					</a>
 				</div>
+
 				<div className={`group w-[50%] h-[70%] rounded-[10px] ${searchFocus ? "shadow-custom" : "bg-search"} flex items-center justify-start px-4 gap-4`}>
 					<div className="w-8 h-8 hover:bg-hover rounded-full flex items-center justify-center">
 						<AiOutlineSearch />
@@ -37,7 +39,7 @@ const Header = ({ slideIn, headerData }: headerType) => {
 					/>
 				</div>
 
-				{user.user.email && <Avatar image={user.user.image} email={user.user.email} />}
+				{user.user.email && <Avatar image={user.user.image} email={user.user.email} type="advanced" />}
 			</header>
 		</div>
 	);
