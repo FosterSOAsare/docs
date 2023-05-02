@@ -9,8 +9,14 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { AiOutlineUnorderedList, AiOutlineSortAscending } from "react-icons/ai";
 import { BsGrid3X3 } from "react-icons/bs";
 import { CgFolder } from "react-icons/cg";
+type MainContent = {
+	name: string;
+	mainPageTypeImage: string;
+	data: number[];
+	title: string;
+};
 
-const MainPageContent = ({ name, mainPageTypeImage }: any) => {
+const MainPageContent = ({ name, mainPageTypeImage, data, title }: MainContent) => {
 	const [view, setView] = useState("grid");
 	const [ownerFilter, setOwnerFilter] = useState({ display: "none", filter: "anyone" });
 	const [sortFilter, setSortFilter] = useState({ display: "none", filter: "opened" });
@@ -45,7 +51,7 @@ const MainPageContent = ({ name, mainPageTypeImage }: any) => {
 		<main className="w-full h-auto min-h-[100vh] pt-[64px]  mx-auto pb-[100px]">
 			<div className="doc__controls  sticky top-[64px] z-[3] bg-white py-4 ">
 				<div className="flex justify-between items-center w-full max-w-[960px] mx-auto">
-					<p className="font-medium">Recent {name}</p>
+					<p className="font-medium">Recent {title}</p>
 					<div className={`flex justify-between items-center ${view === "grid" ? "w-2/5" : "w-1/2"}`}>
 						<div className="relative" ref={ownerRef}>
 							<div className="flex gap-2 p-2 hover:cursor-pointer hover:bg-search rounded-[5px]  justify-start items-center h-full w-full" onClick={displayOwnerFilterPopUp}>
@@ -90,8 +96,8 @@ const MainPageContent = ({ name, mainPageTypeImage }: any) => {
 				</div>
 			</div>
 			<div className={`h-auto  w-full max-w-[960px] mx-auto  ${view === "grid" ? "grid" : "block"} grid-cols-4 gap-8 pt-[20px]`}>
-				{[1, 2, 3, 4, 5, 6, 7, 8].map((e, index) => (
-					<ContentCard key={index} layout={view} shared={(index + 1) % 2 === 0} mainPageTypeImage={mainPageTypeImage} index={index} />
+				{data.map((e: number, index: number) => (
+					<ContentCard key={index} layout={view} shared={(index + 1) % 2 === 0} mainPageTypeImage={mainPageTypeImage} index={index} name={name} />
 				))}
 			</div>
 		</main>

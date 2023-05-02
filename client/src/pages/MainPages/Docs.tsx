@@ -14,6 +14,8 @@ type mainPageType = {
 const Docs = () => {
 	const [headerData, setHeaderData] = useState<mainPageType>({ name: "", image: "" });
 	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
+	const [docsData, setDocsData] = useState([1, 2, 3, 4]);
+	let borderColor = "#1a73e8";
 
 	useEffect(() => {
 		setHeaderData({
@@ -25,7 +27,7 @@ const Docs = () => {
 		<>
 			<Header slideIn={() => slideIn(toggleDispatchFunc)} headerData={headerData} />
 			<SideMenu slideOut={() => slideOut(toggleDispatchFunc)} toggle={toggle} headerData={headerData} />
-			<MainPageContent name="documents" mainPageTypeImage={DocImage} />
+			<MainPageContent title="documents" mainPageTypeImage={DocImage} data={docsData} name="Doc" />
 		</>
 	);
 };
