@@ -17,7 +17,7 @@ const ContentCard = ({ layout, shared, mainPageTypeImage, index, name }: content
 	const [showPopup, setShowPopup] = useState(false);
 	const ActionRef = useRef<any>();
 	const [offline, setOffline] = useState(false);
-	const [position, setPosition] = useState("");
+	const [position, setPosition] = useState({ x: "", y: "" });
 
 	useEffect(() => {
 		// Since the useEffect changes on each layout change , there is a need for a cleanup function remove the event listener that was set
@@ -29,7 +29,7 @@ const ContentCard = ({ layout, shared, mainPageTypeImage, index, name }: content
 	}, [closePopup, layout]);
 
 	function displayActionPopup(e: any) {
-		setPosition(window.innerHeight - e.clientY < 200 ? "top" : "bottom");
+		setPosition({ y: window.innerHeight - e.clientY < 200 ? "top" : "bottom", x: window.innerWidth - e.clientX < 200 ? "left" : "right" });
 		setShowPopup(true);
 	}
 
