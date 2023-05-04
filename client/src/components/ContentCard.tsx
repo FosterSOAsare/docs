@@ -37,7 +37,7 @@ const ContentCard = ({ layout, shared, mainPageTypeImage, index, name }: content
 		<>
 			{layout === "grid" && (
 				<div
-					className={`w-full border-[1px] h-[300px] rounded-[5px]  hover:cursor-pointer ${
+					className={`w-full max-w-[350px] mx-auto border-[1px] h-[300px] rounded-[5px]  hover:cursor-pointer ${
 						name === "Sheet" ? "hover:border-[#188038]" : name === "Doc" ? "hover:border-[#1a73e8]" : name === "Slide" ? "hover:border-[#f9ab00]" : "hover:border-[#8430ce]"
 					} `}>
 					<div className="image w-full h-[220px] flex items-center justify-center">

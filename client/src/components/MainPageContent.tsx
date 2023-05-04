@@ -49,10 +49,10 @@ const MainPageContent = ({ name, mainPageTypeImage, data, title }: MainContent) 
 
 	return (
 		<main className="w-full h-auto min-h-[100vh] pt-[64px]  mx-auto pb-[100px]">
-			<div className="doc__controls  sticky top-[64px] z-[3] bg-white py-4 ">
+			<div className="doc__controls  sticky top-[64px] z-[3] bg-white py-4 px-4 lg:px-0 ">
 				<div className="flex justify-between items-center w-full max-w-[960px] mx-auto">
 					<p className="font-medium">Recent {title}</p>
-					<div className={`flex justify-between items-center ${view === "grid" ? "w-2/5" : "w-1/2"}`}>
+					<div className={`flex justify-between items-center ${view === "grid" ? "w-1/2 lg:w-2/5" : "w-1/2"}`}>
 						<div className="relative" ref={ownerRef}>
 							<div className="flex gap-2 p-2 hover:cursor-pointer hover:bg-search rounded-[5px]  justify-start items-center h-full w-full" onClick={displayOwnerFilterPopUp}>
 								<p className="text-[14px]">{ownerFilter.filter === "anyone" ? "Owned by anyone" : ownerFilter.filter === "me" ? "Owned by me" : "Not owned by me"}</p>
@@ -95,7 +95,7 @@ const MainPageContent = ({ name, mainPageTypeImage, data, title }: MainContent) 
 					</div>
 				</div>
 			</div>
-			<div className={`h-auto  w-full max-w-[960px] mx-auto  ${view === "grid" ? "grid" : "block"} grid-cols-4 gap-8 pt-[20px]`}>
+			<div className={`h-auto  w-full max-w-[960px] mx-auto px-4  lg:px-0 ${view === "grid" ? "grid" : "block"} grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-[20px]`}>
 				{data.map((e: number, index: number) => (
 					<ContentCard key={index} layout={view} shared={(index + 1) % 2 === 0} mainPageTypeImage={mainPageTypeImage} index={index} name={name} />
 				))}
