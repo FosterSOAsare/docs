@@ -19,7 +19,7 @@ authRouter.get("/local", (req, res) => {
 
 authRouter.post("/local", controllerCreateLocalUser);
 authRouter.post("/local/login", controllerLoginLocalUser);
-authRouter.get("/google", passportInstance.authenticate("google", { scope: ["email", "profile"] }));
+authRouter.get("/google", passportInstance.authenticate("google", { scope: ["email", "profile", "https://www.googleapis.com/auth/drive"] }));
 authRouter.get("/google/verify", user, verifyGoogleAuth);
 authRouter.get("/google/callback", passportInstance.authenticate("google", { failureRedirect: `${process.env.CLIENT_URL}/auth/login` }), controllerAuthGoogle);
 

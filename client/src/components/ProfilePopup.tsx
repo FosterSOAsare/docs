@@ -1,8 +1,8 @@
 import React, { ReactNode, useEffect, useRef } from "react";
 import { FaCheck } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { useUserSlice } from "../slices/user.slice";
-import { Link } from "react-router-dom";
+import { useUserSlice, logout } from "../slices/user.slice";
+import { Link, useNavigate } from "react-router-dom";
 import Avatar from "./Avatar";
 
 type sortPopUpTypes = {
@@ -11,8 +11,15 @@ type sortPopUpTypes = {
 const ProfilePopup = ({ setShowProfilePopup }: sortPopUpTypes) => {
 	const user = useSelector(useUserSlice);
 	const profileRef = useRef<any>();
-	function logout() {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	function logoutUser() {
+		// Logout user
+		const fn: any = logout();
+		dispatch(fn);
 		setShowProfilePopup(false);
+		navigate("/");
+		localStorage.removeItem("docs:auth");
 	}
 	return (
 		<div className={`w-[200px] h-auto bg-white absolute top-[110%] right-0  rounded-[5px] shadow-custom py-2`} ref={profileRef}>
@@ -28,7 +35,7 @@ const ProfilePopup = ({ setShowProfilePopup }: sortPopUpTypes) => {
 						Edit profile
 					</Link>
 				</li>
-				<button className="block rounded-[10px] h-10 mb-2 text-white bg-red-400 hover:bg-red-600 mt-4 w-full mx-auto" onClick={logout}>
+				<button className="block rounded-[10px] h-10 mb-2 text-white bg-red-400 hover:bg-red-600 mt-4 w-full mx-auto" onClick={logoutUser}>
 					Logout
 				</button>
 			</ul>
