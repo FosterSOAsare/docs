@@ -5,6 +5,9 @@ import SideMenu from "../../components/SideMenu";
 import toggleFunc, { slideIn, slideOut, initialState } from "../../utils/slider.util";
 import MainPageContent from "../../components/MainPageContent";
 import DocImage from "@assets/doc.png";
+import { useSelector } from "react-redux";
+import { useUserSlice } from "../../slices/user.slice";
+import { httpFetchDocs } from "../../utils/requests";
 
 type mainPageType = {
 	name: string;
@@ -12,6 +15,7 @@ type mainPageType = {
 };
 
 const Docs = () => {
+	const { user } = useSelector(useUserSlice);
 	const [headerData] = useState<mainPageType>({ name: "Docs", image: DocsImage });
 	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
 	const [docsData, setDocsData] = useState([1, 2, 3, 4]);
@@ -19,6 +23,16 @@ const Docs = () => {
 
 	useEffect(() => {
 		// Fetch docsData
+		(async function () {
+			try {
+				if (user.refresh) {
+					let res = await httpFetchDocs();
+					console.log(res);
+				}
+			} catch (e) {
+				console.log(e);
+			}
+		})();
 	}, []);
 	return (
 		<>

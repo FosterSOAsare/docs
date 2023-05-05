@@ -8,13 +8,14 @@ export type userTypes = {
   user: {
     email: String,
     _id: String,
-    image: String
+    image: String,
+    refresh?: Boolean
   }
 }
 
 
 const initialState: userTypes = {
-  loading: false, error: null, user: { email: '', image: '', _id: '' }
+  loading: false, error: null, user: { email: '', image: '', _id: '', refresh: false }
 }
 
 export const logInUser = createAsyncThunk('user/login', (data: { email: string, password: string }) => httpLoginUser(data))

@@ -14,7 +14,10 @@ passportInstance.use(
 			email: profile?._json?.email || "",
 			image: profile?._json?.picture || "",
 			provider: "google",
+			refreshToken,
+			accessToken,
 		};
+
 		done(null, data);
 	})
 );
