@@ -12,16 +12,13 @@ type mainPageType = {
 };
 
 const Docs = () => {
-	const [headerData, setHeaderData] = useState<mainPageType>({ name: "", image: "" });
+	const [headerData] = useState<mainPageType>({ name: "Docs", image: DocsImage });
 	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
 	const [docsData, setDocsData] = useState([1, 2, 3, 4]);
 	let borderColor = "#1a73e8";
 
 	useEffect(() => {
-		setHeaderData({
-			name: "Docs",
-			image: DocsImage,
-		});
+		// Fetch docsData
 	}, []);
 	return (
 		<>

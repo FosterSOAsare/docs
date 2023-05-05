@@ -12,17 +12,12 @@ type mainPageType = {
 };
 
 const Forms = () => {
-	const [headerData, setHeaderData] = useState<mainPageType>({ name: "", image: "" });
+	const [headerData] = useState<mainPageType>({ name: "Forms", image: FormsImage });
 	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
 	const [FormsData, setFormsData] = useState([1, 2]);
 	let borderColor = "#8430ce";
 
-	useEffect(() => {
-		setHeaderData({
-			name: "Forms",
-			image: FormsImage,
-		});
-	}, []);
+	useEffect(() => {}, []);
 	return (
 		<>
 			<Header slideIn={() => slideIn(toggleDispatchFunc)} headerData={headerData} />

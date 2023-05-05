@@ -12,17 +12,12 @@ type mainPageType = {
 };
 
 const Sheets = () => {
-	const [headerData, setHeaderData] = useState<mainPageType>({ name: "", image: "" });
+	const [headerData] = useState<mainPageType>({ name: "Sheets", image: SheetsImage });
 	const [toggle, toggleDispatchFunc] = useReducer(toggleFunc, initialState);
 	const [sheetsData, setSheetsData] = useState([1, 2, 3, 4, 5, 6]);
 	let borderColor = "#188038";
 
-	useEffect(() => {
-		setHeaderData({
-			name: "Sheets",
-			image: SheetsImage,
-		});
-	}, []);
+	useEffect(() => {}, []);
 	return (
 		<>
 			<Header slideIn={() => slideIn(toggleDispatchFunc)} headerData={headerData} />
