@@ -544,6 +544,10 @@ video {
   left: -100px;
 }
 
+.-left-\[200px\] {
+  left: -200px;
+}
+
 .-left-\[5px\] {
   left: -5px;
 }
@@ -622,14 +626,6 @@ video {
 
 .top-\[65px\] {
   top: 65px;
-}
-
-.-left-\[300px\] {
-  left: -300px;
-}
-
-.-left-\[200px\] {
-  left: -200px;
 }
 
 .z-10 {

@@ -30,7 +30,7 @@ const userSlice = createSlice({
       state.user = action.payload
     },
     logout(state: userTypes) {
-      return initialState
+      return { ...initialState, loading: false, error: 'User not found' }
     },
     setImage(state: userTypes) {
 
