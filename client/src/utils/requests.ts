@@ -41,3 +41,17 @@ export const httpVerifyGoogleOauth = async (token: string) => {
   }
 }
 
+export const httpFetchDocs = async () => {
+
+  try {
+    let response = await axiosInstance({
+      method: "GET",
+      url: "/user/docs",
+    });
+    return response?.data
+  } catch (e: any) {
+    console.log(e)
+    const error = createRequestErrorMessage(e)
+    throw new Error(error)
+  }
+}
