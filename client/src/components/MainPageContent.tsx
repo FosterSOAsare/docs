@@ -4,11 +4,13 @@ import closePopup from "../utils/close_popup";
 import ContentCard from "./ContentCard";
 import SortPopUp from "./SortPopUp";
 import OwnerPopUp from "./OwnerPopUp";
+import AddNewType from "./AddNewType";
 
 import { RiArrowDownSFill } from "react-icons/ri";
 import { AiOutlineUnorderedList, AiOutlineSortAscending } from "react-icons/ai";
 import { BsGrid3X3 } from "react-icons/bs";
 import { CgFolder } from "react-icons/cg";
+
 type MainContent = {
 	name: string;
 	mainPageTypeImage: string;
@@ -48,7 +50,7 @@ const MainPageContent = ({ name, mainPageTypeImage, data, title }: MainContent) 
 	}, [closePopup]);
 
 	return (
-		<main className="w-full h-auto min-h-[100vh] pt-[64px]  mx-auto pb-[100px]">
+		<main className="w-full h-auto min-h-[100vh] pt-[64px] relative  mx-auto pb-[100px]">
 			<div className="doc__controls  sticky top-[64px] z-[3] bg-white py-4 px-4 lg:px-0 ">
 				<div className="flex justify-between items-center w-full max-w-[960px] mx-auto">
 					<p className="font-medium">Recent {title}</p>
@@ -100,6 +102,7 @@ const MainPageContent = ({ name, mainPageTypeImage, data, title }: MainContent) 
 					<ContentCard key={index} layout={view} shared={(index + 1) % 2 === 0} mainPageTypeImage={mainPageTypeImage} index={index} name={name} />
 				))}
 			</div>
+			<AddNewType />
 		</main>
 	);
 };
