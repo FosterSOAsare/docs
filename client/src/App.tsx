@@ -18,6 +18,10 @@ import Forms from "./pages/MainPages/Forms";
 import Slides from "./pages/MainPages/Slides";
 import ProtectedPage from "./pages/ProtectedPage";
 import NoDisplayAfterLogin from "./pages/NoDisplayAfterLogIn";
+import NewDoc from "./pages/NewDoc";
+import NewForm from "./pages/NewForm";
+import NewSheet from "./pages/NewSheet";
+import NewSlide from "./pages/NewSlide";
 
 function App() {
 	const dispatch = useDispatch<any>();
@@ -41,11 +45,24 @@ function App() {
 					<Route path="/slides/about" element={<SlidesAbout />}></Route>
 				</Route>
 				<Route>
-					<Route path="/docs" element={<ProtectedPage element={<DocsPage />} />}></Route>
-					<Route path="/sheets" element={<ProtectedPage element={<Sheets />} />}></Route>
-					<Route path="/forms" element={<ProtectedPage element={<Forms />} />}></Route>
-					<Route path="/slides" element={<ProtectedPage element={<Slides />} />}></Route>
+					<Route path="/docs">
+						<Route index element={<ProtectedPage element={<DocsPage />} />}></Route>
+						<Route path="new" element={<ProtectedPage element={<NewDoc />} />}></Route>
+					</Route>
 				</Route>
+				<Route path="/sheets">
+					<Route index element={<ProtectedPage element={<Sheets />} />}></Route>
+					<Route path="new" element={<ProtectedPage element={<NewSheet />} />}></Route>
+				</Route>
+				<Route path="/forms">
+					<Route index element={<ProtectedPage element={<Forms />} />}></Route>
+					<Route path="new" element={<ProtectedPage element={<NewForm />} />}></Route>
+				</Route>
+				<Route path="/slides">
+					<Route index element={<ProtectedPage element={<Slides />} />}></Route>
+					<Route path="new" element={<ProtectedPage element={<NewSlide />} />}></Route>
+				</Route>
+
 				<Route path="/auth">
 					<Route path="register" element={<NoDisplayAfterLogin element={<RegisterPage />} />}></Route>
 					<Route path="login" element={<NoDisplayAfterLogin element={<LoginPage />} />}></Route>

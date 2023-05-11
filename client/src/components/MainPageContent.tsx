@@ -102,7 +102,7 @@ const MainPageContent = ({ name, mainPageTypeImage, data, title }: MainContent) 
 					<ContentCard key={index} layout={view} shared={(index + 1) % 2 === 0} mainPageTypeImage={mainPageTypeImage} index={index} name={name} />
 				))}
 			</div>
-			<AddNewType />
+			<AddNewType name={name + "s"} />
 		</main>
 	);
 };
